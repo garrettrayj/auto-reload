@@ -1,9 +1,0 @@
-
-/* Class = "NSTextFieldCell"; title = "Reload\nevery 1m"; ObjectID = "2Ec-kd-q2K"; */
-"2Ec-kd-q2K.title" = "Reload\nevery 1m";
-
-/* Class = "NSButtonCell"; alternateTitle = "Stop"; ObjectID = "JKA-hw-bEd"; */
-"JKA-hw-bEd.alternateTitle" = "Stop";
-
-/* Class = "NSButtonCell"; title = "Start"; ObjectID = "JKA-hw-bEd"; */
-"JKA-hw-bEd.title" = "Start";
