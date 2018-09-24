@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		681347CE215842C400B3EFAC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 681347CD215842C400B3EFAC /* Info.plist */; };
 		681347D02158462900B3EFAC /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */; };
 		681347D221585DE800B3EFAC /* ToolbarItemIconActive.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 681347D121585DE800B3EFAC /* ToolbarItemIconActive.pdf */; };
+		681347D42159732400B3EFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681347D32159732400B3EFAC /* Main.storyboard */; };
 		6829201B21576A3000EC5EEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829201A21576A3000EC5EEC /* AppDelegate.swift */; };
 		6829201D21576A3000EC5EEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829201C21576A3000EC5EEC /* ViewController.swift */; };
 		6829201F21576A3100EC5EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6829201E21576A3100EC5EEC /* Assets.xcassets */; };
@@ -65,6 +65,7 @@
 		681347CD215842C400B3EFAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		681347D121585DE800B3EFAC /* ToolbarItemIconActive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIconActive.pdf; sourceTree = "<group>"; };
+		681347D32159732400B3EFAC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6829201721576A3000EC5EEC /* AutoReload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoReload.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6829201A21576A3000EC5EEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6829201C21576A3000EC5EEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		6829201921576A3000EC5EEC /* AutoReload */ = {
 			isa = PBXGroup;
 			children = (
+				681347D32159732400B3EFAC /* Main.storyboard */,
 				6829201A21576A3000EC5EEC /* AppDelegate.swift */,
 				6829201C21576A3000EC5EEC /* ViewController.swift */,
 				6829201E21576A3100EC5EEC /* Assets.xcassets */,
@@ -183,10 +185,10 @@
 		6829204E21576AB200EC5EEC /* SafariExtension */ = {
 			isa = PBXGroup;
 			children = (
-				681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */,
 				681347CD215842C400B3EFAC /* Info.plist */,
 				6829204F21576AB200EC5EEC /* SafariExtensionHandler.swift */,
 				6829205121576AB200EC5EEC /* SafariExtensionViewController.swift */,
+				681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */,
 				6829205921576AB200EC5EEC /* ToolbarItemIcon.pdf */,
 				681347D121585DE800B3EFAC /* ToolbarItemIconActive.pdf */,
 				6829205B21576AB200EC5EEC /* SafariExtension.entitlements */,
@@ -319,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6829201F21576A3100EC5EEC /* Assets.xcassets in Resources */,
+				681347D42159732400B3EFAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +345,6 @@
 			files = (
 				681347D221585DE800B3EFAC /* ToolbarItemIconActive.pdf in Resources */,
 				681347D02158462900B3EFAC /* SafariExtensionViewController.xib in Resources */,
-				681347CE215842C400B3EFAC /* Info.plist in Resources */,
 				6829205A21576AB200EC5EEC /* ToolbarItemIcon.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -95,7 +95,6 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         updatePopoverStatus(tab: tab)
     }
     
-    
     func resetPopover() {
         NSLog("Reseting popover.")
         progressIndicator.isHidden = true
