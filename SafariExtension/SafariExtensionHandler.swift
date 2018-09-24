@@ -12,16 +12,19 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
         // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
+        SafariExtensionViewController.shared.updateToolbarIcon(window: window)
         validationHandler(true, "")
     }
 
     override func popoverWillShow(in window: SFSafariWindow) {
         window.getActiveTab { (tab) in
             if let tab = tab {
-                if let timer = TabTimers.shared.timers[tab] {
-                    SafariExtensionViewController.shared.restoreTab(tab: tab, timer: timer)
-                } else {
-                    SafariExtensionViewController.shared.resetPopover()
+                DispatchQueue.main.async {
+                    if let timer = TabTimers.shared.timers[tab] {
+                        SafariExtensionViewController.shared.restoreTab(tab: tab, timer: timer)
+                    } else {
+                        SafariExtensionViewController.shared.resetPopover()
+                    }
                 }
             }
         }
@@ -29,15 +32,5 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     override func popoverViewController() -> SFSafariExtensionViewController {
         return SafariExtensionViewController.shared
-    }
-    
-    @objc func fireReload(timer: Timer) {
-        NSLog("Refresh")
-        
-        guard let tab = timer.userInfo as? SFSafariTab else { return }
-        tab.getActivePage { (page) in
-            page?.reload()
-        }
-        
     }
 }
