@@ -21,6 +21,8 @@
 		6829205A21576AB200EC5EEC /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 6829205921576AB200EC5EEC /* ToolbarItemIcon.pdf */; };
 		6829205E21576AB200EC5EEC /* SafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6829204A21576AB200EC5EEC /* SafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		682920642157777F00EC5EEC /* TabTimers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682920632157777F00EC5EEC /* TabTimers.swift */; };
+		68B0FA8C215C677B00037CED /* TranslucentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B0FA8B215C677B00037CED /* TranslucentView.swift */; };
+		68B0FA8E215C693B00037CED /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B0FA8D215C693B00037CED /* Window.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +68,7 @@
 		681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		681347D121585DE800B3EFAC /* ToolbarItemIconActive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIconActive.pdf; sourceTree = "<group>"; };
 		681347D32159732400B3EFAC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		6829201721576A3000EC5EEC /* AutoReload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoReload.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6829201721576A3000EC5EEC /* Auto Reload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Reload.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6829201A21576A3000EC5EEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6829201C21576A3000EC5EEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6829201E21576A3100EC5EEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		6829205921576AB200EC5EEC /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		6829205B21576AB200EC5EEC /* SafariExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafariExtension.entitlements; sourceTree = "<group>"; };
 		682920632157777F00EC5EEC /* TabTimers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabTimers.swift; sourceTree = "<group>"; };
+		68B0FA8B215C677B00037CED /* TranslucentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentView.swift; sourceTree = "<group>"; };
+		68B0FA8D215C693B00037CED /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +139,7 @@
 		6829201821576A3000EC5EEC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6829201721576A3000EC5EEC /* AutoReload.app */,
+				6829201721576A3000EC5EEC /* Auto Reload.app */,
 				6829202921576A3200EC5EEC /* AutoReloadTests.xctest */,
 				6829203421576A3200EC5EEC /* AutoReloadUITests.xctest */,
 				6829204A21576AB200EC5EEC /* SafariExtension.appex */,
@@ -152,6 +156,8 @@
 				6829201E21576A3100EC5EEC /* Assets.xcassets */,
 				6829202321576A3100EC5EEC /* Info.plist */,
 				6829202421576A3100EC5EEC /* AutoReload.entitlements */,
+				68B0FA8D215C693B00037CED /* Window.swift */,
+				68B0FA8B215C677B00037CED /* TranslucentView.swift */,
 			);
 			path = AutoReload;
 			sourceTree = "<group>";
@@ -200,9 +206,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6829201621576A3000EC5EEC /* AutoReload */ = {
+		6829201621576A3000EC5EEC /* Auto Reload */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6829203D21576A3200EC5EEC /* Build configuration list for PBXNativeTarget "AutoReload" */;
+			buildConfigurationList = 6829203D21576A3200EC5EEC /* Build configuration list for PBXNativeTarget "Auto Reload" */;
 			buildPhases = (
 				6829201321576A3000EC5EEC /* Sources */,
 				6829201421576A3000EC5EEC /* Frameworks */,
@@ -214,9 +220,9 @@
 			dependencies = (
 				6829205D21576AB200EC5EEC /* PBXTargetDependency */,
 			);
-			name = AutoReload;
+			name = "Auto Reload";
 			productName = AutoReload;
-			productReference = 6829201721576A3000EC5EEC /* AutoReload.app */;
+			productReference = 6829201721576A3000EC5EEC /* Auto Reload.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6829202821576A3200EC5EEC /* AutoReloadTests */ = {
@@ -284,6 +290,11 @@
 				TargetAttributes = {
 					6829201621576A3000EC5EEC = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
 					};
 					6829202821576A3200EC5EEC = {
 						CreatedOnToolsVersion = 10.0;
@@ -295,6 +306,11 @@
 					};
 					6829204921576AB200EC5EEC = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -302,12 +318,15 @@
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 6829200E21576A3000EC5EEC;
 			productRefGroup = 6829201821576A3000EC5EEC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6829201621576A3000EC5EEC /* AutoReload */,
+				6829201621576A3000EC5EEC /* Auto Reload */,
 				6829202821576A3200EC5EEC /* AutoReloadTests */,
 				6829203321576A3200EC5EEC /* AutoReloadUITests */,
 				6829204921576AB200EC5EEC /* SafariExtension */,
@@ -356,6 +375,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B0FA8C215C677B00037CED /* TranslucentView.swift in Sources */,
+				68B0FA8E215C693B00037CED /* Window.swift in Sources */,
 				6829201D21576A3000EC5EEC /* ViewController.swift in Sources */,
 				6829201B21576A3000EC5EEC /* AppDelegate.swift in Sources */,
 			);
@@ -392,12 +413,12 @@
 /* Begin PBXTargetDependency section */
 		6829202B21576A3200EC5EEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6829201621576A3000EC5EEC /* AutoReload */;
+			target = 6829201621576A3000EC5EEC /* Auto Reload */;
 			targetProxy = 6829202A21576A3200EC5EEC /* PBXContainerItemProxy */;
 		};
 		6829203621576A3200EC5EEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6829201621576A3000EC5EEC /* AutoReload */;
+			target = 6829201621576A3000EC5EEC /* Auto Reload */;
 			targetProxy = 6829203521576A3200EC5EEC /* PBXContainerItemProxy */;
 		};
 		6829205D21576AB200EC5EEC /* PBXTargetDependency */ = {
@@ -464,6 +485,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Auto Reload";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -519,6 +541,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "Auto Reload";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -531,16 +554,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AutoReload/AutoReload.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N7TC759VWV;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = AutoReload/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReload;
+				PRODUCT_BUNDLE_IDENTIFIER = net.devsci.autoreload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -551,16 +577,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AutoReload/AutoReload.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = N7TC759VWV;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = AutoReload/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReload;
+				PRODUCT_BUNDLE_IDENTIFIER = net.devsci.autoreload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -654,13 +683,14 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N7TC759VWV;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReload.SafariExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.devsci.autoreload.safariextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -675,13 +705,14 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N7TC759VWV;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = SafariExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReload.SafariExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.devsci.autoreload.safariextension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -701,7 +732,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6829203D21576A3200EC5EEC /* Build configuration list for PBXNativeTarget "AutoReload" */ = {
+		6829203D21576A3200EC5EEC /* Build configuration list for PBXNativeTarget "Auto Reload" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6829203E21576A3200EC5EEC /* Debug */,
