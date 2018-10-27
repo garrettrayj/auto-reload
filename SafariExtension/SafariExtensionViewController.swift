@@ -1,11 +1,3 @@
-//
-//  SafariExtensionViewController.swift
-//  SafariExtension
-//
-//  Created by Garrett Johnson on 9/23/18.
-//  Copyright © 2018 DevSci. All rights reserved.
-//
-
 import SafariServices
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
@@ -25,7 +17,35 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     @IBOutlet weak var startStopButton: NSButton!
     
+    @IBOutlet weak var decreaseIntervalButton: NSButton!
+    
+    @IBOutlet weak var increaseIntervalButton: NSButton!
+    
     @IBAction func adjustIntervalAction(_ sender: NSSlider) {
+        setInterval(interval: self.intervalSlider.doubleValue);
+        updatePopoverStatus()
+    }
+    
+    @IBAction func decreaseInterval(_ sender: NSButton) {
+        let currentValue = self.intervalSlider.doubleValue;
+        
+        if (currentValue > 59 && currentValue - 60 > 59) {
+            setInterval(interval: currentValue - 60);
+        } else {
+            setInterval(interval: currentValue - 1);
+        }
+        
+        updatePopoverStatus()
+    }
+    
+    @IBAction func increaseInterval(_ sender: NSButton) {
+        let currentValue = self.intervalSlider.doubleValue;
+        
+        if (currentValue > 59) {
+            setInterval(interval: currentValue + 60);
+        } else {
+            setInterval(interval: currentValue + 1);
+        }
         updatePopoverStatus()
     }
     
@@ -35,14 +55,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
                 window.getActiveTab { (tab) in
                     if let tab = tab {
                         DispatchQueue.main.async {
-                            if let timer = TabTimers.shared.timers[tab] {
-                                self.stopTabTimer(tab: tab, timer: timer)
-                            } else {
+                            if TabTimers.shared.getTabTimer(tab: tab) == nil {
                                 self.startTabTimer(tab: tab)
+                            } else {
+                                self.stopTabTimer(tab: tab)
                             }
-                            
-                            self.updateToolbarIcon(window: window)
                         }
+                        self.updateToolbarIcon(window: window)
                     }
                 }
             }
@@ -57,81 +76,118 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         return formatter
     }()
     
+    var updateTimer: Timer?
+    
     func startTabTimer(tab: SFSafariTab) {
-        NSLog("Adding a new timer for tab. \(tab.hash) with \(self.intervalSlider.doubleValue) second interval.")
-        
-        let timer = Timer(timeInterval: self.intervalSlider.doubleValue, target: self, selector: #selector(self.fireReload), userInfo: tab, repeats: true)
-        timer.tolerance = 1.0
-        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
-        TabTimers.shared.timers[tab] = timer
-        
-        self.intervalSlider.isHidden = true
-        self.progressIndicator.isHidden = false
-        self.progressIndicator.startAnimation(tab)
-        
-        self.updatePopoverStatus(tab: tab)
+        let tabTimer: TabTimer = TabTimers.shared.createTabTimer(tab: tab, interval: self.intervalSlider.doubleValue)
+        setMode(mode: "running")
+        updatePopoverStatus(tabTimer: tabTimer)
+        startUpdateTimer(tabTimer: tabTimer)
     }
     
-    func stopTabTimer(tab: SFSafariTab, timer: Timer) {
-        NSLog("Stopping timer for tab \(tab.hash).")
-        
-        timer.invalidate()
-        TabTimers.shared.timers[tab] = nil
-        
-        self.intervalSlider.isHidden = false
-        self.progressIndicator.isHidden = true
-        
-        self.updatePopoverStatus(tab: tab)
+    func stopTabTimer(tab: SFSafariTab) {
+        stopUpdateTimer()
+        TabTimers.shared.removeTabTimer(tab: tab)
+        setMode(mode: "config")
+        updatePopoverStatus()
     }
     
-    func restoreTab(tab: SFSafariTab, timer: Timer) {
-        NSLog("Restoring timer settings for tab \(tab.hash).")
-        progressIndicator.isHidden = false
-        progressIndicator.startAnimation(tab)
-        intervalSlider.isHidden = true
-        intervalSlider.doubleValue = timer.timeInterval
-        startStopButton.state = .on
-        
-        updatePopoverStatus(tab: tab)
+    func restoreTab(tabTimer: TabTimer) {
+        NSLog("Restoring timer settings for tab \(tabTimer.tab.hash).")
+        intervalSlider.doubleValue = tabTimer.interval
+        setMode(mode: "running")
+        updatePopoverStatus(tabTimer: tabTimer)
     }
     
     func resetPopover() {
         NSLog("Reseting popover.")
-        progressIndicator.isHidden = true
-        intervalSlider.isHidden = false
         intervalSlider.doubleValue = 60
-        startStopButton.state = .off
-        
+        setMode(mode: "config")
         updatePopoverStatus()
     }
     
-    func updatePopoverStatus(tab: SFSafariTab? = nil) {
-        if let tab = tab {
-            if let timer = TabTimers.shared.timers[tab] {
-                // Tab has an active timer. Use "running" status template
-                let formattedInterval = self.formatInterval(interval: timer.timeInterval)
-                self.statusTextField.stringValue = "Reloading\nevery \(formattedInterval)"
-                return
-            }
+    func setMode(mode: String) {
+        switch mode {
+        case "running":
+            intervalSlider.isHidden = true
+            increaseIntervalButton.isHidden = true
+            decreaseIntervalButton.isHidden = true
+            progressIndicator.isHidden = false
+            progressIndicator.startAnimation("animate")
+            startStopButton.state = .on
+            break;
+        default:
+            // config mode
+            intervalSlider.isHidden = false
+            decreaseIntervalButton.isHidden = false
+            increaseIntervalButton.isHidden = false
+            progressIndicator.isHidden = true
+            startStopButton.state = .off
+        }
+    }
+    
+    func updatePopoverStatus(tabTimer: TabTimer? = nil) {
+        if let tabTimer = tabTimer {
+            // Tab has an active timer. Use "running" status template
+            let secondsUntilReload = tabTimer.getSecondsUntilReload()
+            let formattedInterval = self.formatIntervalForStatus(interval: secondsUntilReload)
+            self.statusTextField.stringValue = "Reloading\nin \(formattedInterval)"
+            
+            self.progressIndicator.minValue = 0;
+            self.progressIndicator.maxValue = tabTimer.interval - 1
+            self.progressIndicator.doubleValue = tabTimer.interval - secondsUntilReload
+            return
         }
         
-        let formattedInterval = self.formatInterval(interval: self.intervalSlider.doubleValue)
+        let formattedInterval = self.formatIntervalForConfig(interval: self.intervalSlider.doubleValue)
         self.statusTextField.stringValue = "Reload\nevery" + " " + formattedInterval
     }
     
+    func startUpdateTimer(tabTimer: TabTimer) {
+        updateTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.fireUpdateStatus), userInfo: tabTimer, repeats: true)
+        updateTimer?.tolerance = 0.2
+        RunLoop.current.add(updateTimer!, forMode: RunLoop.Mode.common)
+    }
+    
+    func stopUpdateTimer() {
+        updateTimer?.invalidate()
+        updateTimer = nil
+    }
+
+    @objc func fireUpdateStatus(timer: Timer) {
+        guard let tabTimer = timer.userInfo as? TabTimer else { return }
+        updatePopoverStatus(tabTimer: tabTimer)
+    }
+    
     func updateToolbarIcon(window: SFSafariWindow) {
-        window.getActiveTab { (tab) in
-            window.getToolbarItem { (toolbarItem) in
-                if TabTimers.shared.timers[tab!] === nil {
-                    toolbarItem?.setImage(NSImage(named: "ToolbarItemIcon.pdf"))
-                } else {
-                    toolbarItem?.setImage(NSImage(named: "ToolbarItemIconActive.pdf"))
+        window.getToolbarItem { (toolbarItem) in
+            window.getActiveTab { (tab) in
+                if let tab = tab {
+                    if TabTimers.shared.getTabTimer(tab: tab) === nil {
+                        toolbarItem?.setImage(NSImage(named: "ToolbarItemIcon.pdf"))
+                    } else {
+                        toolbarItem?.setImage(NSImage(named: "ToolbarItemIconActive.pdf"))
+                    }
                 }
             }
         }
     }
     
-    func formatInterval(interval: Double) -> String {
+    func setInterval(interval: Double) {
+        intervalSlider.doubleValue = roundInterval(interval: interval);
+    }
+    
+    func roundInterval(interval: Double) -> Double {
+        if (interval < 60) {
+            return ceil(interval)
+        }
+        
+        let fractionNum = interval / 60.0
+        let roundedNum = ceil(fractionNum)
+        return roundedNum * 60
+    }
+    
+    func formatIntervalForConfig(interval: Double) -> String {
         if interval > 60 && interval < 3600 {
             intervalFormatter.allowedUnits = [.minute]
         } else {
@@ -145,17 +201,13 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
     }
     
-    @objc func fireReload(timer: Timer) {
-        guard let tab = timer.userInfo as? SFSafariTab else { return }
-        tab.getActivePage { (page) in
-            if let page = page {
-                NSLog("Refreshing tab \(tab.hash)")
-                page.reload()
-            } else {
-                NSLog("Active page for tab \(tab.hash) not available. Removing timer.")
-                TabTimers.shared.timers[tab]?.invalidate()
-                TabTimers.shared.timers[tab] = nil
-            }
+    func formatIntervalForStatus(interval: Double) -> String {
+        intervalFormatter.allowedUnits = [.hour, .minute, .second]
+        
+        if let formattedInterval = intervalFormatter.string(from: interval) {
+            return formattedInterval
+        } else {
+            return "?"
         }
     }
 }
