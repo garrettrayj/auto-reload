@@ -52,16 +52,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     @IBAction func startStopAction(_ sender: NSButton) {
         SFSafariApplication.getActiveWindow { (window) in
             if let window = window {
-                window.getActiveTab { (tab) in
-                    if let tab = tab {
-                        DispatchQueue.main.async {
-                            if TabTimers.shared.getTabTimer(tab: tab) == nil {
-                                self.startTabTimer(tab: tab)
-                            } else {
-                                self.stopTabTimer(tab: tab)
-                            }
-                        }
-                        self.updateToolbarIcon(window: window)
+                let activeReloader = Reloaders.shared.getReloaderForWindow(window: window)
+                DispatchQueue.main.async {
+                    if activeReloader != nil {
+                        self.removeWindowReloader(reloader: activeReloader!)
+                    } else {
+                        self.addWindowReloader(window: window)
                     }
                 }
             }
@@ -76,34 +72,37 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         return formatter
     }()
     
-    var updateTimer: Timer?
+    var countdown: Timer?
     
-    func startTabTimer(tab: SFSafariTab) {
-        let tabTimer: TabTimer = TabTimers.shared.createTabTimer(tab: tab, interval: self.intervalSlider.doubleValue)
+    func addWindowReloader(window: SFSafariWindow) {
+        let reloader = Reloaders.shared.createReloader(window: window, interval: self.intervalSlider.doubleValue)
         setMode(mode: "running")
-        updatePopoverStatus(tabTimer: tabTimer)
-        startUpdateTimer(tabTimer: tabTimer)
+        updatePopoverStatus(reloader: reloader)
+        startUpdateTimer(reloader: reloader)
+        updateToolbarIcon(window: window)
     }
     
-    func stopTabTimer(tab: SFSafariTab) {
+    func removeWindowReloader(reloader: Reloader) {
+        Reloaders.shared.remove(reloader: reloader)
         stopUpdateTimer()
-        TabTimers.shared.removeTabTimer(tab: tab)
         setMode(mode: "config")
         updatePopoverStatus()
+        updateToolbarIcon(window: reloader.window)
     }
     
-    func restoreTab(tabTimer: TabTimer) {
-        NSLog("Restoring timer settings for tab \(tabTimer.tab.hash).")
-        intervalSlider.doubleValue = tabTimer.interval
-        setMode(mode: "running")
-        updatePopoverStatus(tabTimer: tabTimer)
-    }
-    
-    func resetPopover() {
-        NSLog("Reseting popover.")
-        intervalSlider.doubleValue = 60
-        setMode(mode: "config")
-        updatePopoverStatus()
+    func loadPopover(window: SFSafariWindow) {
+        let activeReloader = Reloaders.shared.getReloaderForWindow(window: window)
+        
+        if activeReloader != nil {
+            self.intervalSlider.doubleValue = activeReloader!.interval
+            self.setMode(mode: "running")
+            self.updatePopoverStatus(reloader: activeReloader)
+            self.startUpdateTimer(reloader: activeReloader!)
+        } else {
+            self.intervalSlider.doubleValue = 60
+            self.setMode(mode: "config")
+            self.updatePopoverStatus()
+        }
     }
     
     func setMode(mode: String) {
@@ -126,16 +125,16 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
     }
     
-    func updatePopoverStatus(tabTimer: TabTimer? = nil) {
-        if let tabTimer = tabTimer {
-            // Tab has an active timer. Use "running" status template
-            let secondsUntilReload = tabTimer.getSecondsUntilReload()
+    func updatePopoverStatus(reloader: Reloader? = nil) {
+        if let reloader = reloader {
+            // Window has an active timer. Use "running" status template
+            let secondsUntilReload = reloader.getSecondsUntilReload()
             let formattedInterval = self.formatIntervalForStatus(interval: secondsUntilReload)
             self.statusTextField.stringValue = "Reloading\nin \(formattedInterval)"
             
             self.progressIndicator.minValue = 0;
-            self.progressIndicator.maxValue = tabTimer.interval - 1
-            self.progressIndicator.doubleValue = tabTimer.interval - secondsUntilReload
+            self.progressIndicator.maxValue = reloader.interval - 1
+            self.progressIndicator.doubleValue = reloader.interval - secondsUntilReload
             return
         }
         
@@ -143,32 +142,25 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         self.statusTextField.stringValue = "Reload\nevery" + " " + formattedInterval
     }
     
-    func startUpdateTimer(tabTimer: TabTimer) {
-        updateTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.fireUpdateStatus), userInfo: tabTimer, repeats: true)
-        updateTimer?.tolerance = 0.2
-        RunLoop.current.add(updateTimer!, forMode: RunLoop.Mode.common)
+    func startUpdateTimer(reloader: Reloader) {
+        countdown?.invalidate()
+        countdown = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {_ in
+            self.updatePopoverStatus(reloader: reloader)
+        }
     }
     
     func stopUpdateTimer() {
-        updateTimer?.invalidate()
-        updateTimer = nil
+        countdown?.invalidate()
     }
 
-    @objc func fireUpdateStatus(timer: Timer) {
-        guard let tabTimer = timer.userInfo as? TabTimer else { return }
-        updatePopoverStatus(tabTimer: tabTimer)
-    }
-    
     func updateToolbarIcon(window: SFSafariWindow) {
+        let activeReloader = Reloaders.shared.getReloaderForWindow(window: window)
+        
         window.getToolbarItem { (toolbarItem) in
-            window.getActiveTab { (tab) in
-                if let tab = tab {
-                    if TabTimers.shared.getTabTimer(tab: tab) === nil {
-                        toolbarItem?.setImage(NSImage(named: "ToolbarItemIcon.pdf"))
-                    } else {
-                        toolbarItem?.setImage(NSImage(named: "ToolbarItemIconActive.pdf"))
-                    }
-                }
+            if activeReloader != nil {
+                toolbarItem?.setImage(NSImage(named: "ToolbarItemIconActive.pdf"))
+            } else {
+                toolbarItem?.setImage(NSImage(named: "ToolbarItemIcon.pdf"))
             }
         }
     }
@@ -209,5 +201,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         } else {
             return "?"
         }
+    }
+    
+    deinit {
+        stopUpdateTimer()
     }
 }
