@@ -62,7 +62,7 @@ class TabTimer: Hashable {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
     
-    public var hashValue: Int {
-        return tab.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(tab.hashValue)
     }
 }

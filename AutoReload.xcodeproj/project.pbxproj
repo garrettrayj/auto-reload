@@ -293,6 +293,7 @@
 				TargetAttributes = {
 					6829201621576A3000EC5EEC = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -309,6 +310,7 @@
 					};
 					6829204921576AB200EC5EEC = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -323,6 +325,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 6829200E21576A3000EC5EEC;
 			productRefGroup = 6829201821576A3000EC5EEC /* Products */;
@@ -571,7 +574,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.devsci.autoreload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -594,7 +597,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.devsci.autoreload;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -698,7 +701,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -720,7 +723,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
