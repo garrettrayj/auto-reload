@@ -202,8 +202,4 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             return "?"
         }
     }
-    
-    deinit {
-        stopUpdateTimer()
-    }
 }
