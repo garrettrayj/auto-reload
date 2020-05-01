@@ -3,7 +3,7 @@
 Auto Reload
 ===========
 
-![Auto Reload Icon](AutoReload/Assets.xcassets/AppPanel3.imageset/app_panel_3.png)
+![Auto Reload Thumbnail](AutoReload/Assets.xcassets/AppPanel3.imageset/app_panel_3.png)
 
 Auto Reload is a Safari extension for automatically refreshing browser windows with recurring timers.
 The goal with this implementation is to provide functionality with as few "add-on" side effects as possible. 
@@ -19,7 +19,7 @@ How accurate should the timers be?
 What does power and resource management think about what's going on? (hint, they're not happy usually) 
 What granularity of time interval do users need and/or want?
 
-Along the way I've made a lot of assumptions catering to my personal usa case, turning build dashboards into digital signs.
+Along the way I've made a lot of assumptions catering to my personal use case, turning build dashboards into digital signs.
 Digital signs are not useful if they crash, so stability is the top priority.
 I also feel some obligation as a webmaster to not enable the wholesale DoS-ing of websites with sub-second system timers.
 That said, I also enjoy some good ol' fashioned hacking with web scripts on intervals.
