@@ -3,7 +3,7 @@
 //  AutoReload
 //
 //  Created by Garrett Johnson on 9/23/18.
-//  Copyright © 2018 DevSci. All rights reserved.
+//  Copyright © 2018 Garrett Johnson.
 //
 
 import Cocoa

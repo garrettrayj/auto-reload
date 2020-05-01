@@ -1,7 +1,14 @@
+//
+//  SafariExtensionViewController.swift
+//  AutoReload
+//
+//  Created by Garrett Johnson on 9/23/18.
+//  Copyright © 2018 Garrett Johnson.
+//
+
 import SafariServices
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
-    
     static let shared: SafariExtensionViewController = {
         let shared = SafariExtensionViewController()
         shared.preferredContentSize = NSSize(width:80, height:98)
@@ -46,6 +53,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         } else {
             setInterval(interval: currentValue + 1);
         }
+
         updatePopoverStatus()
     }
     

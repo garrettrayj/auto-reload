@@ -1,12 +1,20 @@
-/**
- * Thread-safe TabTimer collection class
- */
+//
+//  Window.swift
+//  AutoReload
+//
+//  Created by Garrett Johnson on 9/23/18.
+//  Copyright © 2018 Garrett Johnson.
+//
+
 import Foundation
 import SafariServices
 
+/**
+ * Thread-safe Reloader collection class
+ */
 class Reloaders {
     static let shared = Reloaders()
-    
+
     var reloaders = Set<Reloader>()
     
     func createReloader(window: SFSafariWindow, interval: Double) -> Reloader {
@@ -15,7 +23,6 @@ class Reloaders {
     }
     
     func getReloaderForWindow(window: SFSafariWindow) -> Reloader? {
-        
         return self.reloaders.first { (reloader) -> Bool in
             return window == reloader.window;
         }
