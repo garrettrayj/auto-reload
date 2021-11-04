@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Reload Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 1.5rem;
+        }
+        
+        table {
+            border-collapse: collapse;
+            
+        }
+        
+        td, th {
+            border: 1px solid #999;
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+        }
+        
+        td:nth-child(2), th:nth-child(2) {
+            text-align: right;
+        }
+        
+        td {
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+        
+        tr:nth-child(2) td {
+            color: green;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Reload Test</h1>
+    
+    <p><button id="clear">Clear History</button></p>
+    <table id="history">
+        <tr>
+            <th>Reload Time</th>
+            <th>Difference</th>
+        </tr>
+    </table>
+    
+    <script type="text/javascript">
+        var localStorage = window.localStorage;
+        var rawHistory = localStorage.getItem('history') ?? "[]";
+        var reloadHistory = JSON.parse(rawHistory)
+        var reloadDate = new Date();
+        var table = document.getElementById('history');
+        var tableData = []
+        
+        reloadHistory.push(reloadDate)
+        localStorage.setItem('history', JSON.stringify(reloadHistory));
+        
+        
+        reloadHistory.forEach((reloadDate, idx) => {
+            var rowData = {'date': new Date(reloadDate), 'diff': 0}
+            if (idx > 0) {
+                prevDate = new Date(reloadHistory[idx - 1]);
+                rowData['diff'] = rowData['date'] - prevDate;
+            }
+            tableData.unshift(rowData)
+        })
+        
+        tableData.forEach((rowData, idx) => {
+            var row = table.insertRow();
+            var dateCell = row.insertCell();
+            var diffCell = row.insertCell();
+            dateCell.innerHTML = rowData['date'];
+            diffCell.innerHTML = rowData['diff'];
+        })
+        
+        document.getElementById('clear').onclick = () => {
+            localStorage.removeItem('history');
+            location.reload()
+        }
+        
+    </script>
+</body>
+</html>
+    
