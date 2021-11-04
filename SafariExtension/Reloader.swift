@@ -9,8 +9,9 @@
 import Foundation
 import SafariServices
 
-class Reloader: Hashable {
-    var timer: Timer?
+class Reloader {
+    private var timer: Timer?
+    
     var window: SFSafariWindow
     var interval: Double
     
@@ -47,7 +48,6 @@ class Reloader: Hashable {
             let components = calendar.dateComponents([.second], from: Date(), to: timer.fireDate)
             
             if let seconds = components.second {
-                // Add a second to handle inevitable shifts between UI actions and rounding
                 return Double(seconds) + 1.0;
             } else {
                 return 0;
@@ -56,13 +56,9 @@ class Reloader: Hashable {
         
         return -1;
     }
-    
-    func getProgress() -> Double {
-        return ceil(((interval - getSecondsUntilReload()) / interval) * 100)
-    }
-    
-    // MARK: - <Hashable>
-    
+}
+
+extension Reloader: Hashable {
     static func == (lhs: Reloader, rhs: Reloader) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }

@@ -20,7 +20,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverDidClose(in window: SFSafariWindow) {
-        SafariExtensionViewController.shared.stopUpdateTimer()
+        SafariExtensionViewController.shared.stopCountdownTimer()
     }
 
     override func popoverViewController() -> SFSafariExtensionViewController {

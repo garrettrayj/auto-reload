@@ -17,15 +17,10 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }()
     
     @IBOutlet weak var intervalSlider: NSSlider!
-
     @IBOutlet weak var statusTextField: NSTextField!
-    
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
-    
     @IBOutlet weak var startStopButton: NSButton!
-    
     @IBOutlet weak var decreaseIntervalButton: NSButton!
-    
     @IBOutlet weak var increaseIntervalButton: NSButton!
     
     @IBAction func adjustIntervalAction(_ sender: NSSlider) {
@@ -60,12 +55,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     @IBAction func startStopAction(_ sender: NSButton) {
         SFSafariApplication.getActiveWindow { (window) in
             if let window = window {
-                let activeReloader = Reloaders.shared.getReloaderForWindow(window: window)
+                let activeReloader = Reloaders.shared.forWindow(window: window)
                 DispatchQueue.main.async {
                     if activeReloader != nil {
-                        self.removeWindowReloader(reloader: activeReloader!)
+                        self.removeReloader(reloader: activeReloader!)
                     } else {
-                        self.addWindowReloader(window: window)
+                        self.addReloader(window: window)
                     }
                 }
             }
@@ -80,32 +75,16 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         return formatter
     }()
     
-    var countdown: Timer?
-    
-    func addWindowReloader(window: SFSafariWindow) {
-        let reloader = Reloaders.shared.createReloader(window: window, interval: self.intervalSlider.doubleValue)
-        setMode(mode: "running")
-        updatePopoverStatus(reloader: reloader)
-        startUpdateTimer(reloader: reloader)
-        updateToolbarIcon(window: window)
-    }
-    
-    func removeWindowReloader(reloader: Reloader) {
-        Reloaders.shared.remove(reloader: reloader)
-        stopUpdateTimer()
-        setMode(mode: "config")
-        updatePopoverStatus()
-        updateToolbarIcon(window: reloader.window)
-    }
+    private var countdownTimer: Timer?
     
     func loadPopover(window: SFSafariWindow) {
-        let activeReloader = Reloaders.shared.getReloaderForWindow(window: window)
+        let activeReloader = Reloaders.shared.forWindow(window: window)
         
         if activeReloader != nil {
             self.intervalSlider.doubleValue = activeReloader!.interval
             self.setMode(mode: "running")
             self.updatePopoverStatus(reloader: activeReloader)
-            self.startUpdateTimer(reloader: activeReloader!)
+            self.startCountdownTimer(reloader: activeReloader!)
         } else {
             self.intervalSlider.doubleValue = 60
             self.setMode(mode: "config")
@@ -113,7 +92,39 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
     }
     
-    func setMode(mode: String) {
+    func stopCountdownTimer() {
+        countdownTimer?.invalidate()
+    }
+    
+    func updateToolbarIcon(window: SFSafariWindow) {
+        let activeReloader = Reloaders.shared.forWindow(window: window)
+        
+        window.getToolbarItem { (toolbarItem) in
+            if activeReloader != nil {
+                toolbarItem?.setImage(NSImage(named: "ToolbarItemIconActive.pdf"))
+            } else {
+                toolbarItem?.setImage(NSImage(named: "ToolbarItemIcon.pdf"))
+            }
+        }
+    }
+    
+    private func addReloader(window: SFSafariWindow) {
+        let reloader = Reloaders.shared.createReloader(window: window, interval: self.intervalSlider.doubleValue)
+        setMode(mode: "running")
+        updatePopoverStatus(reloader: reloader)
+        startCountdownTimer(reloader: reloader)
+        updateToolbarIcon(window: window)
+    }
+    
+    private func removeReloader(reloader: Reloader) {
+        Reloaders.shared.remove(reloader: reloader)
+        stopCountdownTimer()
+        setMode(mode: "config")
+        updatePopoverStatus()
+        updateToolbarIcon(window: reloader.window)
+    }
+    
+    private func setMode(mode: String) {
         switch mode {
         case "running":
             intervalSlider.isHidden = true
@@ -133,7 +144,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
     }
     
-    func updatePopoverStatus(reloader: Reloader? = nil) {
+    private func updatePopoverStatus(reloader: Reloader? = nil) {
         if let reloader = reloader {
             // Window has an active timer. Use "running" status template
             let secondsUntilReload = reloader.getSecondsUntilReload()
@@ -150,34 +161,18 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         self.statusTextField.stringValue = "Reload\nevery" + " " + formattedInterval
     }
     
-    func startUpdateTimer(reloader: Reloader) {
-        countdown?.invalidate()
-        countdown = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {_ in
+    private func startCountdownTimer(reloader: Reloader) {
+        countdownTimer?.invalidate()
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {_ in
             self.updatePopoverStatus(reloader: reloader)
         }
     }
     
-    func stopUpdateTimer() {
-        countdown?.invalidate()
-    }
-
-    func updateToolbarIcon(window: SFSafariWindow) {
-        let activeReloader = Reloaders.shared.getReloaderForWindow(window: window)
-        
-        window.getToolbarItem { (toolbarItem) in
-            if activeReloader != nil {
-                toolbarItem?.setImage(NSImage(named: "ToolbarItemIconActive.pdf"))
-            } else {
-                toolbarItem?.setImage(NSImage(named: "ToolbarItemIcon.pdf"))
-            }
-        }
-    }
-    
-    func setInterval(interval: Double) {
+    private func setInterval(interval: Double) {
         intervalSlider.doubleValue = roundInterval(interval: interval);
     }
     
-    func roundInterval(interval: Double) -> Double {
+    private func roundInterval(interval: Double) -> Double {
         if (interval < 60) {
             return ceil(interval)
         }
@@ -187,7 +182,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         return roundedNum * 60
     }
     
-    func formatIntervalForConfig(interval: Double) -> String {
+    private func formatIntervalForConfig(interval: Double) -> String {
         if interval > 60 && interval < 3600 {
             intervalFormatter.allowedUnits = [.minute]
         } else {
@@ -201,7 +196,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
     }
     
-    func formatIntervalForStatus(interval: Double) -> String {
+    private func formatIntervalForStatus(interval: Double) -> String {
         intervalFormatter.allowedUnits = [.hour, .minute, .second]
         
         if let formattedInterval = intervalFormatter.string(from: interval) {

@@ -1,5 +1,5 @@
 //
-//  Window.swift
+//  Reloaders.swift
 //  AutoReload
 //
 //  Created by Garrett Johnson on 9/23/18.
@@ -10,19 +10,19 @@ import Foundation
 import SafariServices
 
 /**
- * Thread-safe Reloader collection class
+ * Container for window Reloader objects
  */
 class Reloaders {
     static let shared = Reloaders()
 
-    var reloaders = Set<Reloader>()
+    private var reloaders = Set<Reloader>()
     
     func createReloader(window: SFSafariWindow, interval: Double) -> Reloader {
         let insertedReloaders = self.reloaders.insert(Reloader(window: window, interval: interval))
         return insertedReloaders.1
     }
     
-    func getReloaderForWindow(window: SFSafariWindow) -> Reloader? {
+    func forWindow(window: SFSafariWindow) -> Reloader? {
         return self.reloaders.first { (reloader) -> Bool in
             return window == reloader.window;
         }
