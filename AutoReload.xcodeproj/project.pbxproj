@@ -10,6 +10,7 @@
 		681347D02158462900B3EFAC /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */; };
 		681347D221585DE800B3EFAC /* ToolbarItemIconActive.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 681347D121585DE800B3EFAC /* ToolbarItemIconActive.pdf */; };
 		681347D42159732400B3EFAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681347D32159732400B3EFAC /* Main.storyboard */; };
+		681627112733E6C000B75948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 681627102733E6C000B75948 /* Assets.xcassets */; };
 		6829201B21576A3000EC5EEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829201A21576A3000EC5EEC /* AppDelegate.swift */; };
 		6829201D21576A3000EC5EEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829201C21576A3000EC5EEC /* ViewController.swift */; };
 		6829201F21576A3100EC5EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6829201E21576A3100EC5EEC /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		681347CF2158462900B3EFAC /* SafariExtensionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		681347D121585DE800B3EFAC /* ToolbarItemIconActive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIconActive.pdf; sourceTree = "<group>"; };
 		681347D32159732400B3EFAC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		681627102733E6C000B75948 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6829201721576A3000EC5EEC /* Auto Reload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Reload.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6829201A21576A3000EC5EEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6829201C21576A3000EC5EEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				6829205B21576AB200EC5EEC /* SafariExtension.entitlements */,
 				6850394721838E9E00B0C959 /* Reloader.swift */,
 				683D584B23BA0361000E9573 /* Reloaders.swift */,
+				681627102733E6C000B75948 /* Assets.xcassets */,
 			);
 			path = SafariExtension;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			files = (
 				681347D221585DE800B3EFAC /* ToolbarItemIconActive.pdf in Resources */,
 				681347D02158462900B3EFAC /* SafariExtensionViewController.xib in Resources */,
+				681627112733E6C000B75948 /* Assets.xcassets in Resources */,
 				6829205A21576AB200EC5EEC /* ToolbarItemIcon.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
