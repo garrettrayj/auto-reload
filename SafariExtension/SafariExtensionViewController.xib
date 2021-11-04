@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,87 +19,104 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="84" height="100"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="98" height="116"/>
             <subviews>
-                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5P1-md-8tq">
-                    <rect key="frame" x="28" y="65" width="28" height="30"/>
-                    <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="3600" doubleValue="60" sliderType="circular" id="IEh-GY-kg1"/>
-                    <connections>
-                        <action selector="adjustIntervalAction:" target="-2" id="ZVv-oA-ly4"/>
-                    </connections>
-                </slider>
-                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" minValue="1" maxValue="3600" doubleValue="1" displayedWhenStopped="NO" bezeled="NO" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="v3s-Sq-K3r">
-                    <rect key="frame" x="31" y="69" width="22" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="22" id="HZV-T5-OAI"/>
-                        <constraint firstAttribute="height" constant="22" id="wOB-yp-BfS"/>
-                    </constraints>
-                </progressIndicator>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Iy-aV-wGF" userLabel="Status Text Field">
-                    <rect key="frame" x="3" y="36" width="78" height="28"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="2Ec-kd-q2K">
-                        <font key="font" metaFont="smallSystem"/>
-                        <string key="title">Reload
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-oO-3Ui">
+                    <rect key="frame" x="0.0" y="0.0" width="98" height="116"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cmY-nF-K1d">
+                            <rect key="frame" x="0.0" y="72" width="98" height="32"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-Nr-o5z" userLabel="Decrease Interval Button">
+                                    <rect key="frame" x="0.0" y="10" width="9.5" height="12"/>
+                                    <buttonCell key="cell" type="inline" bezelStyle="inline" image="NSGoBackTemplate" imagePosition="overlaps" alignment="center" continuous="YES" state="on" imageScaling="proportionallyDown" inset="2" id="OHL-Yf-qS8">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystemBold"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="decreaseInterval:" target="-2" id="Z5k-zd-URR"/>
+                                    </connections>
+                                </button>
+                                <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5P1-md-8tq">
+                                    <rect key="frame" x="15" y="1" width="28" height="30"/>
+                                    <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="3600" doubleValue="60" sliderType="circular" id="IEh-GY-kg1"/>
+                                    <connections>
+                                        <action selector="adjustIntervalAction:" target="-2" id="ZVv-oA-ly4"/>
+                                    </connections>
+                                </slider>
+                                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" minValue="1" maxValue="3600" doubleValue="1" displayedWhenStopped="NO" bezeled="NO" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="v3s-Sq-K3r">
+                                    <rect key="frame" x="49" y="0.0" width="32" height="32"/>
+                                </progressIndicator>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u79-Ar-GSe" userLabel="Increase Interval Button">
+                                    <rect key="frame" x="89" y="10" width="9.5" height="12"/>
+                                    <buttonCell key="cell" type="inline" bezelStyle="inline" image="NSGoForwardTemplate" imagePosition="only" alignment="center" continuous="YES" state="on" imageScaling="proportionallyDown" inset="2" id="Dzx-kK-Rh7">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystemBold"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="increaseInterval:" target="-2" id="p3K-ZV-HKs"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Iy-aV-wGF" userLabel="Status Text Field">
+                            <rect key="frame" x="22" y="36" width="55" height="28"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="2Ec-kd-q2K">
+                                <font key="font" metaFont="smallSystem"/>
+                                <string key="title">Reload
 every 1m</string>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lqU-8f-J4P" userLabel="Start Stop Button">
-                    <rect key="frame" x="16" y="6" width="52" height="27"/>
-                    <buttonCell key="cell" type="push" title="Start" alternateTitle="Stop" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dAd-i1-Hbh">
-                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="startStopAction:" target="-2" id="xml-8J-jMV"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-Nr-o5z" userLabel="Decrease Interval Button">
-                    <rect key="frame" x="14" y="72" width="15" height="16"/>
-                    <buttonCell key="cell" type="inline" bezelStyle="inline" image="NSGoBackTemplate" imagePosition="overlaps" alignment="center" continuous="YES" state="on" imageScaling="proportionallyDown" inset="2" id="OHL-Yf-qS8">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystemBold"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="decreaseInterval:" target="-2" id="Z5k-zd-URR"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u79-Ar-GSe" userLabel="Increase Interval Button">
-                    <rect key="frame" x="55" y="72" width="15" height="16"/>
-                    <buttonCell key="cell" type="inline" bezelStyle="inline" image="NSGoForwardTemplate" imagePosition="only" alignment="center" continuous="YES" state="on" imageScaling="proportionallyDown" inset="2" id="Dzx-kK-Rh7">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystemBold"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="increaseInterval:" target="-2" id="p3K-ZV-HKs"/>
-                    </connections>
-                </button>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lqU-8f-J4P" userLabel="Start Stop Button">
+                            <rect key="frame" x="22" y="5" width="54" height="27"/>
+                            <buttonCell key="cell" type="push" title="Start" alternateTitle="Stop" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dAd-i1-Hbh">
+                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="startStopAction:" target="-2" id="xml-8J-jMV"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <edgeInsets key="edgeInsets" left="12" right="12" top="12" bottom="12"/>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="lqU-8f-J4P" secondAttribute="bottom" constant="12" id="2Uq-3I-qDh"/>
-                <constraint firstItem="v3s-Sq-K3r" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="6C2-pF-Ba2"/>
-                <constraint firstItem="4Iy-aV-wGF" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="6Gy-0s-FwQ"/>
-                <constraint firstItem="5P1-md-8tq" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="AN6-SG-03y"/>
-                <constraint firstItem="u79-Ar-GSe" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="12" id="CLz-Ro-yAy"/>
-                <constraint firstItem="lqU-8f-J4P" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="D8n-zI-66Q"/>
-                <constraint firstItem="u79-Ar-GSe" firstAttribute="leading" secondItem="5P1-md-8tq" secondAttribute="trailing" constant="1" id="Gl5-Vf-Z8k"/>
-                <constraint firstAttribute="trailing" secondItem="4Iy-aV-wGF" secondAttribute="trailing" constant="5" id="HRf-VG-1GF"/>
-                <constraint firstItem="4Iy-aV-wGF" firstAttribute="top" secondItem="5P1-md-8tq" secondAttribute="bottom" constant="4" id="LRI-eM-7CL"/>
-                <constraint firstItem="5P1-md-8tq" firstAttribute="leading" secondItem="jAc-Nr-o5z" secondAttribute="trailing" constant="1" id="M3X-CL-hDz"/>
-                <constraint firstItem="5P1-md-8tq" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="PVo-Cd-ebM"/>
-                <constraint firstItem="jAc-Nr-o5z" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="12" id="imW-th-WuW"/>
-                <constraint firstItem="lqU-8f-J4P" firstAttribute="top" secondItem="4Iy-aV-wGF" secondAttribute="bottom" constant="6" id="klW-XU-Ck9"/>
-                <constraint firstItem="4Iy-aV-wGF" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="5" id="nBW-sY-j6F"/>
-                <constraint firstItem="v3s-Sq-K3r" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="9" id="xU8-TG-XxH"/>
+                <constraint firstItem="cXa-oO-3Ui" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="4RL-Nn-ZMc"/>
+                <constraint firstItem="cXa-oO-3Ui" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="JDo-CF-Vqm"/>
+                <constraint firstAttribute="trailing" secondItem="cXa-oO-3Ui" secondAttribute="trailing" id="NIE-Ha-DQx"/>
+                <constraint firstAttribute="bottom" secondItem="cXa-oO-3Ui" secondAttribute="bottom" id="tpS-U0-tFL"/>
             </constraints>
-            <point key="canvasLocation" x="89.5" y="169"/>
+            <point key="canvasLocation" x="89" y="169"/>
         </customView>
     </objects>
     <resources>
-        <image name="NSGoBackTemplate" width="9" height="12"/>
-        <image name="NSGoForwardTemplate" width="9" height="12"/>
+        <image name="NSGoBackTemplate" width="10" height="14"/>
+        <image name="NSGoForwardTemplate" width="10" height="14"/>
     </resources>
 </document>
