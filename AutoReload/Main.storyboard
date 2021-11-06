@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -97,130 +97,150 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="ViewController" customModule="Auto_Reload" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="980" height="470"/>
+                    <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="980" height="448"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <subviews>
-                            <visualEffectView blendingMode="behindWindow" material="sheet" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="3xu-Id-bUc" customClass="TranslucentView" customModule="Auto_Reload" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="980" height="470"/>
-                            </visualEffectView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-El-z31">
-                                <rect key="frame" x="18" y="411" width="944" height="39"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" title="Auto Reload is ready" usesSingleLineMode="YES" id="yYq-rt-cNb">
-                                    <font key="font" metaFont="systemThin" size="32"/>
-                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-Ld-hft" userLabel="Setup Steps Numbers">
-                                <rect key="frame" x="20" y="379" width="940" height="27"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uA-zF-4gv">
+                                <rect key="frame" x="16" y="16" width="948" height="409"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHK-VM-EEA">
-                                        <rect key="frame" x="-2" y="0.0" width="304" height="27"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1" id="qu8-aM-jZU">
-                                            <font key="font" metaFont="systemThin" size="22"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-El-z31">
+                                        <rect key="frame" x="348" y="378" width="252" height="31"/>
+                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" title="Auto Reload is Ready!" usesSingleLineMode="YES" id="yYq-rt-cNb">
+                                            <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YP7-Uy-cOA">
-                                        <rect key="frame" x="318" y="0.0" width="304" height="27"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2" id="klu-TA-bwJ">
-                                            <font key="font" metaFont="systemThin" size="22"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xdv-Vn-jVQ">
-                                        <rect key="frame" x="638" y="0.0" width="304" height="27"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="3" id="t3B-6M-L6f">
-                                            <font key="font" metaFont="systemThin" size="22"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="bottom" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-Ld-hft" userLabel="Setup Steps Numbers">
+                                        <rect key="frame" x="0.0" y="340" width="948" height="26"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHK-VM-EEA">
+                                                <rect key="frame" x="-2" y="0.0" width="309" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1" id="qu8-aM-jZU">
+                                                    <font key="font" textStyle="title1" name=".SFNS-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YP7-Uy-cOA">
+                                                <rect key="frame" x="319" y="0.0" width="310" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2" id="klu-TA-bwJ">
+                                                    <font key="font" textStyle="title1" name=".SFNS-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xdv-Vn-jVQ">
+                                                <rect key="frame" x="641" y="0.0" width="309" height="26"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="3" id="t3B-6M-L6f">
+                                                    <font key="font" textStyle="title1" name=".SFNS-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="fkV-t8-F9D" userLabel="Setup Steps">
+                                        <rect key="frame" x="0.0" y="312" width="948" height="16"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-d1-uni">
+                                                <rect key="frame" x="-2" y="0.0" width="309" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Open Safari" id="S4C-Pd-BNB">
+                                                    <font key="font" textStyle="body" name=".SFNS-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-b2-SW0">
+                                                <rect key="frame" x="319" y="0.0" width="310" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable Auto Reload in Preferences" id="lDM-mm-hTM">
+                                                    <font key="font" textStyle="body" name=".SFNS-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mYR-NM-3CL">
+                                                <rect key="frame" x="641" y="0.0" width="309" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Start Reloading!" id="UIa-xB-yd3">
+                                                    <font key="font" textStyle="body" name=".SFNS-Regular"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="IC9-Bx-IcZ" userLabel="Setup Steps Images">
+                                        <rect key="frame" x="8" y="0.0" width="932" height="300"/>
+                                        <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-w6-1h1" userLabel="App Panel 1">
+                                                <rect key="frame" x="-3" y="-3" width="306" height="306"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="zP5-ZE-JvJ"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="AppPanel1" id="Y63-fS-AAW"/>
+                                            </imageView>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ckL-v9-LEt" userLabel="App Panel 2">
+                                                <rect key="frame" x="313" y="-3" width="306" height="306"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="9NI-ha-CFJ"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="AppPanel2" id="bwT-Wb-JPL"/>
+                                            </imageView>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CM3-ft-dUC" userLabel="App Panel 3">
+                                                <rect key="frame" x="629" y="-3" width="306" height="306"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="OAy-Yt-NzZ"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="AppPanel3" id="PiJ-bN-5Sn"/>
+                                            </imageView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="fkV-t8-F9D" firstAttribute="leading" secondItem="4uA-zF-4gv" secondAttribute="leading" id="1dt-Ns-Gid"/>
+                                    <constraint firstItem="Uqv-Ld-hft" firstAttribute="leading" secondItem="4uA-zF-4gv" secondAttribute="leading" id="2ah-d4-Y8t"/>
+                                    <constraint firstAttribute="trailing" secondItem="Uqv-Ld-hft" secondAttribute="trailing" id="3tm-SB-QA6"/>
+                                    <constraint firstAttribute="trailing" secondItem="fkV-t8-F9D" secondAttribute="trailing" id="8if-pt-MiS"/>
+                                </constraints>
                                 <visibilityPriorities>
+                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="fkV-t8-F9D" userLabel="Setup Steps">
-                                <rect key="frame" x="20" y="345" width="940" height="34"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-d1-uni">
-                                        <rect key="frame" x="-2" y="0.0" width="304" height="34"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Open Safari web browser" id="S4C-Pd-BNB">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-b2-SW0">
-                                        <rect key="frame" x="318" y="0.0" width="304" height="34"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable Auto Reload in Safari &gt; Preferences &gt; Extensions" id="lDM-mm-hTM">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mYR-NM-3CL">
-                                        <rect key="frame" x="638" y="0.0" width="304" height="34"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Use the toolbar item to start reloading tabs" id="UIa-xB-yd3">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="IC9-Bx-IcZ" userLabel="Setup Steps Images">
-                                <rect key="frame" x="20" y="30" width="940" height="300"/>
-                                <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uaq-w6-1h1" userLabel="App Panel 1">
-                                        <rect key="frame" x="-3" y="-3" width="306" height="306"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="zP5-ZE-JvJ"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="AppPanel1" id="Y63-fS-AAW"/>
-                                    </imageView>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ckL-v9-LEt" userLabel="App Panel 2">
-                                        <rect key="frame" x="317" y="-3" width="306" height="306"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="9NI-ha-CFJ"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="AppPanel2" id="bwT-Wb-JPL"/>
-                                    </imageView>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CM3-ft-dUC" userLabel="App Panel 3">
-                                        <rect key="frame" x="637" y="-3" width="306" height="306"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="OAy-Yt-NzZ"/>
-                                        </constraints>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="AppPanel3" id="PiJ-bN-5Sn"/>
-                                    </imageView>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -228,25 +248,10 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="3xu-Id-bUc" secondAttribute="bottom" id="0xR-sV-tmH"/>
-                            <constraint firstAttribute="trailing" secondItem="XQ4-El-z31" secondAttribute="trailing" constant="20" id="665-O4-Zoo"/>
-                            <constraint firstItem="Uqv-Ld-hft" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="EqI-22-wpQ"/>
-                            <constraint firstAttribute="trailing" secondItem="IC9-Bx-IcZ" secondAttribute="trailing" constant="20" id="HmI-ea-4Rf"/>
-                            <constraint firstItem="fkV-t8-F9D" firstAttribute="top" secondItem="Uqv-Ld-hft" secondAttribute="bottom" id="JPT-oI-gKz"/>
-                            <constraint firstItem="IC9-Bx-IcZ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="RRy-1h-fHC"/>
-                            <constraint firstItem="XQ4-El-z31" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="Yga-No-qJI"/>
-                            <constraint firstItem="fkV-t8-F9D" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="YoI-e2-GDu"/>
-                            <constraint firstItem="fkV-t8-F9D" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="aFG-MS-dKP"/>
-                            <constraint firstItem="XQ4-El-z31" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="cCb-yp-xwa"/>
-                            <constraint firstItem="Uqv-Ld-hft" firstAttribute="top" secondItem="XQ4-El-z31" secondAttribute="bottom" constant="5" id="cwR-s1-Rnz"/>
-                            <constraint firstItem="IC9-Bx-IcZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="e7r-RK-SQw"/>
-                            <constraint firstItem="3xu-Id-bUc" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="eej-Zr-KMz"/>
-                            <constraint firstItem="3xu-Id-bUc" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="hf0-MY-2Zs"/>
-                            <constraint firstItem="Uqv-Ld-hft" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="mtC-H7-E01"/>
-                            <constraint firstAttribute="trailing" secondItem="Uqv-Ld-hft" secondAttribute="trailing" constant="20" id="seH-tx-hOL"/>
-                            <constraint firstItem="IC9-Bx-IcZ" firstAttribute="top" secondItem="fkV-t8-F9D" secondAttribute="bottom" constant="15" id="wE3-ya-sES"/>
-                            <constraint firstAttribute="trailing" secondItem="fkV-t8-F9D" secondAttribute="trailing" constant="20" id="x8P-3l-UKM"/>
-                            <constraint firstAttribute="trailing" secondItem="3xu-Id-bUc" secondAttribute="trailing" id="ytm-VF-me0"/>
+                            <constraint firstAttribute="trailing" secondItem="4uA-zF-4gv" secondAttribute="trailing" constant="16" id="HDh-PU-CaF"/>
+                            <constraint firstAttribute="bottom" secondItem="4uA-zF-4gv" secondAttribute="bottom" constant="16" id="azQ-uR-sNa"/>
+                            <constraint firstItem="4uA-zF-4gv" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="24" id="g52-gi-coO"/>
+                            <constraint firstItem="4uA-zF-4gv" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="16" id="tIf-fC-SPE"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="wantsLayer" value="YES"/>
