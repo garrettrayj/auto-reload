@@ -13,18 +13,30 @@ class Reloader {
     private var timer: Timer?
     
     var window: SFSafariWindow
+    var allTabs: Bool
     var interval: Double
     
-    init(window: SFSafariWindow, interval: Double) {
+    init(window: SFSafariWindow, allTabs: Bool, interval: Double) {
         self.window = window
+        self.allTabs = allTabs
         self.interval = interval
         self.startTimer()
     }
     
     @objc func reload() {
-        window.getActiveTab { (tab) in
-            tab?.getActivePage { (page) in
-                page?.reload()
+        if allTabs {
+            window.getAllTabs { tabs in
+                for tab in tabs {
+                    tab.getActivePage { page in
+                        page?.reload()
+                    }
+                }
+            }
+        } else {
+            window.getActiveTab { tab in
+                tab?.getActivePage { page in
+                    page?.reload()
+                }
             }
         }
     }

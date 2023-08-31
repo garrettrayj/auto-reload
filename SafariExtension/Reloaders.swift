@@ -17,8 +17,10 @@ class Reloaders {
 
     private var reloaders = Set<Reloader>()
     
-    func createReloader(window: SFSafariWindow, interval: Double) -> Reloader {
-        let insertedReloaders = self.reloaders.insert(Reloader(window: window, interval: interval))
+    func createReloader(window: SFSafariWindow, allTabs: Bool, interval: Double) -> Reloader {
+        let insertedReloaders = self.reloaders.insert(
+            Reloader(window: window, allTabs: allTabs, interval: interval)
+        )
         return insertedReloaders.1
     }
     

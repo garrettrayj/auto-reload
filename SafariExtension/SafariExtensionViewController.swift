@@ -11,13 +11,14 @@ import SafariServices
 class SafariExtensionViewController: SFSafariExtensionViewController {
     static let shared: SafariExtensionViewController = {
         let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(width:80, height:98)
-        
+        shared.preferredContentSize = NSSize(width: 140, height: 164)
         return shared
     }()
     
     @IBOutlet weak var intervalSlider: NSSlider!
-    @IBOutlet weak var statusTextField: NSTextField!
+    @IBOutlet weak var stateLabel: NSTextField!
+    @IBOutlet weak var scopeSwitch: NSSegmentedControl!
+    @IBOutlet weak var timerLabel: NSTextField!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var startStopButton: NSButton!
     @IBOutlet weak var decreaseIntervalButton: NSButton!
@@ -52,16 +53,18 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         updatePopoverStatus()
     }
     
+    @IBAction func changeScope(_ sender: NSSegmentedControl) {
+        UserDefaults.standard.set(scopeSwitch.integerValue, forKey: "scopeSwitchValue")
+    }
+    
     @IBAction func startStopAction(_ sender: NSButton) {
-        SFSafariApplication.getActiveWindow { (window) in
-            if let window = window {
-                let activeReloader = Reloaders.shared.forWindow(window: window)
-                DispatchQueue.main.async {
-                    if activeReloader != nil {
-                        self.removeReloader(reloader: activeReloader!)
-                    } else {
-                        self.addReloader(window: window)
-                    }
+        SFSafariApplication.getActiveWindow { window in
+            guard let window = window else { return }
+            DispatchQueue.main.async {
+                if let activeReloader = Reloaders.shared.forWindow(window: window) {
+                    self.removeReloader(reloader: activeReloader)
+                } else {
+                    self.addReloader(window: window)
                 }
             }
         }
@@ -78,15 +81,22 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     private var countdownTimer: Timer?
     
     func loadPopover(window: SFSafariWindow) {
-        let activeReloader = Reloaders.shared.forWindow(window: window)
-        
-        if activeReloader != nil {
-            self.intervalSlider.doubleValue = activeReloader!.interval
+        if let activeReloader = Reloaders.shared.forWindow(window: window) {
+            self.intervalSlider.doubleValue = activeReloader.interval
+            self.scopeSwitch.intValue = activeReloader.allTabs ? 1 : 0
             self.setMode(mode: "running")
             self.updatePopoverStatus(reloader: activeReloader)
-            self.startCountdownTimer(reloader: activeReloader!)
+            self.startCountdownTimer(reloader: activeReloader)
         } else {
-            self.intervalSlider.doubleValue = 60
+            let lastInterval = UserDefaults.standard.double(forKey: "intervalSliderValue")
+            if lastInterval > 0 {
+                self.intervalSlider.doubleValue = lastInterval
+            } else {
+                self.intervalSlider.doubleValue = 60
+            }
+            self.scopeSwitch.integerValue = UserDefaults.standard.integer(
+                forKey: "scopeSwitchValue"
+            )
             self.setMode(mode: "config")
             self.updatePopoverStatus()
         }
@@ -109,7 +119,11 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     private func addReloader(window: SFSafariWindow) {
-        let reloader = Reloaders.shared.createReloader(window: window, interval: self.intervalSlider.doubleValue)
+        let reloader = Reloaders.shared.createReloader(
+            window: window,
+            allTabs: scopeSwitch.intValue == 1,
+            interval: self.intervalSlider.doubleValue
+        )
         setMode(mode: "running")
         updatePopoverStatus(reloader: reloader)
         startCountdownTimer(reloader: reloader)
@@ -149,7 +163,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             // Window has an active timer. Use "running" status template
             let secondsUntilReload = reloader.getSecondsUntilReload()
             let formattedInterval = self.formatIntervalForStatus(interval: secondsUntilReload)
-            self.statusTextField.stringValue = "Reloading\nin \(formattedInterval)"
+            self.stateLabel.stringValue = "Reloading"
+            self.timerLabel.stringValue = "in \(formattedInterval)"
+            self.scopeSwitch.isEnabled = false
             
             self.progressIndicator.minValue = 0;
             self.progressIndicator.maxValue = reloader.interval - 1
@@ -158,7 +174,9 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
         
         let formattedInterval = self.formatIntervalForConfig(interval: self.intervalSlider.doubleValue)
-        self.statusTextField.stringValue = "Reload\nevery" + " " + formattedInterval
+        self.stateLabel.stringValue = "Reload"
+        self.timerLabel.stringValue = "every \(formattedInterval)"
+        self.scopeSwitch.isEnabled = true
     }
     
     private func startCountdownTimer(reloader: Reloader) {
@@ -170,6 +188,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     
     private func setInterval(interval: Double) {
         intervalSlider.doubleValue = roundInterval(interval: interval);
+        UserDefaults.standard.set(intervalSlider.doubleValue, forKey: "intervalSliderValue")
     }
     
     private func roundInterval(interval: Double) -> Double {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -98,13 +98,13 @@
             <objects>
                 <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="ViewController" customModule="Auto_Reload" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" misplaced="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="980" height="448"/>
+                        <rect key="frame" x="0.0" y="0.0" width="980" height="449"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uA-zF-4gv">
                                 <rect key="frame" x="16" y="16" width="948" height="409"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-El-z31">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-El-z31">
                                         <rect key="frame" x="348" y="378" width="252" height="31"/>
                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" title="Auto Reload is Ready!" usesSingleLineMode="YES" id="yYq-rt-cNb">
                                             <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
@@ -115,7 +115,7 @@
                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="bottom" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-Ld-hft" userLabel="Setup Steps Numbers">
                                         <rect key="frame" x="0.0" y="340" width="948" height="26"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHK-VM-EEA">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHK-VM-EEA">
                                                 <rect key="frame" x="-2" y="0.0" width="309" height="26"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1" id="qu8-aM-jZU">
                                                     <font key="font" textStyle="title1" name=".SFNS-Regular"/>
@@ -123,7 +123,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YP7-Uy-cOA">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YP7-Uy-cOA">
                                                 <rect key="frame" x="319" y="0.0" width="310" height="26"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2" id="klu-TA-bwJ">
                                                     <font key="font" textStyle="title1" name=".SFNS-Regular"/>
@@ -131,7 +131,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xdv-Vn-jVQ">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xdv-Vn-jVQ">
                                                 <rect key="frame" x="641" y="0.0" width="309" height="26"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="3" id="t3B-6M-L6f">
                                                     <font key="font" textStyle="title1" name=".SFNS-Regular"/>
@@ -154,7 +154,7 @@
                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="fkV-t8-F9D" userLabel="Setup Steps">
                                         <rect key="frame" x="0.0" y="312" width="948" height="16"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-d1-uni">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-d1-uni">
                                                 <rect key="frame" x="-2" y="0.0" width="309" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Open Safari" id="S4C-Pd-BNB">
                                                     <font key="font" textStyle="body" name=".SFNS-Regular"/>
@@ -162,7 +162,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-b2-SW0">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C8k-b2-SW0">
                                                 <rect key="frame" x="319" y="0.0" width="310" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Enable Auto Reload in Preferences" id="lDM-mm-hTM">
                                                     <font key="font" textStyle="body" name=".SFNS-Regular"/>
@@ -170,7 +170,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mYR-NM-3CL">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mYR-NM-3CL">
                                                 <rect key="frame" x="641" y="0.0" width="309" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Start Reloading!" id="UIa-xB-yd3">
                                                     <font key="font" textStyle="body" name=".SFNS-Regular"/>
