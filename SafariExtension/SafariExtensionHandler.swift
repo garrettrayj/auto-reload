@@ -9,8 +9,11 @@
 import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-    override func validateToolbarItem(in window: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
-        // This is called when Safari's state changed in some way that would require the extension's toolbar item to be validated again.
+    /// Called when Safari's state has changed in a way that requires the toolbar item to be revalidated.
+    override func validateToolbarItem(
+        in window: SFSafariWindow,
+        validationHandler: @escaping ((Bool, String) -> Void)
+    ) {
         SafariExtensionViewController.shared.updateToolbarIcon(window: window)
         validationHandler(true, "")
     }

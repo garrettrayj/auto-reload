@@ -15,8 +15,6 @@
 		6829201B21576A3000EC5EEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829201A21576A3000EC5EEC /* AppDelegate.swift */; };
 		6829201D21576A3000EC5EEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829201C21576A3000EC5EEC /* ViewController.swift */; };
 		6829201F21576A3100EC5EEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6829201E21576A3100EC5EEC /* Assets.xcassets */; };
-		6829202E21576A3200EC5EEC /* AutoReloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829202D21576A3200EC5EEC /* AutoReloadTests.swift */; };
-		6829203921576A3200EC5EEC /* AutoReloadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829203821576A3200EC5EEC /* AutoReloadUITests.swift */; };
 		6829204D21576AB200EC5EEC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6829204C21576AB200EC5EEC /* Cocoa.framework */; };
 		6829205021576AB200EC5EEC /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829204F21576AB200EC5EEC /* SafariExtensionHandler.swift */; };
 		6829205221576AB200EC5EEC /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829205121576AB200EC5EEC /* SafariExtensionViewController.swift */; };
@@ -29,20 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6829202A21576A3200EC5EEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6829200F21576A3000EC5EEC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6829201621576A3000EC5EEC;
-			remoteInfo = AutoReload;
-		};
-		6829203521576A3200EC5EEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6829200F21576A3000EC5EEC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6829201621576A3000EC5EEC;
-			remoteInfo = AutoReload;
-		};
 		6829205C21576AB200EC5EEC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6829200F21576A3000EC5EEC /* Project object */;
@@ -79,12 +63,6 @@
 		6829201E21576A3100EC5EEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6829202321576A3100EC5EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6829202421576A3100EC5EEC /* AutoReload.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AutoReload.entitlements; sourceTree = "<group>"; };
-		6829202921576A3200EC5EEC /* AutoReloadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoReloadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6829202D21576A3200EC5EEC /* AutoReloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReloadTests.swift; sourceTree = "<group>"; };
-		6829202F21576A3200EC5EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6829203421576A3200EC5EEC /* AutoReloadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoReloadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6829203821576A3200EC5EEC /* AutoReloadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoReloadUITests.swift; sourceTree = "<group>"; };
-		6829203A21576A3200EC5EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6829204A21576AB200EC5EEC /* SafariExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SafariExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6829204C21576AB200EC5EEC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6829204F21576AB200EC5EEC /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -103,20 +81,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		6829201421576A3000EC5EEC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6829202621576A3200EC5EEC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6829203121576A3200EC5EEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -142,8 +106,6 @@
 				68824D692733D84E00637214 /* README.md */,
 				68824D6A2733D84E00637214 /* TestPage.html */,
 				6829201921576A3000EC5EEC /* AutoReload */,
-				6829202C21576A3200EC5EEC /* AutoReloadTests */,
-				6829203721576A3200EC5EEC /* AutoReloadUITests */,
 				6829204E21576AB200EC5EEC /* SafariExtension */,
 				6829204B21576AB200EC5EEC /* Frameworks */,
 				6829201821576A3000EC5EEC /* Products */,
@@ -154,8 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				6829201721576A3000EC5EEC /* Auto Reload.app */,
-				6829202921576A3200EC5EEC /* AutoReloadTests.xctest */,
-				6829203421576A3200EC5EEC /* AutoReloadUITests.xctest */,
 				6829204A21576AB200EC5EEC /* SafariExtension.appex */,
 			);
 			name = Products;
@@ -175,24 +135,6 @@
 				681627122733EEDB00B75948 /* Credits.rtf */,
 			);
 			path = AutoReload;
-			sourceTree = "<group>";
-		};
-		6829202C21576A3200EC5EEC /* AutoReloadTests */ = {
-			isa = PBXGroup;
-			children = (
-				6829202D21576A3200EC5EEC /* AutoReloadTests.swift */,
-				6829202F21576A3200EC5EEC /* Info.plist */,
-			);
-			path = AutoReloadTests;
-			sourceTree = "<group>";
-		};
-		6829203721576A3200EC5EEC /* AutoReloadUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6829203821576A3200EC5EEC /* AutoReloadUITests.swift */,
-				6829203A21576A3200EC5EEC /* Info.plist */,
-			);
-			path = AutoReloadUITests;
 			sourceTree = "<group>";
 		};
 		6829204B21576AB200EC5EEC /* Frameworks */ = {
@@ -242,42 +184,6 @@
 			productReference = 6829201721576A3000EC5EEC /* Auto Reload.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6829202821576A3200EC5EEC /* AutoReloadTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6829204021576A3200EC5EEC /* Build configuration list for PBXNativeTarget "AutoReloadTests" */;
-			buildPhases = (
-				6829202521576A3200EC5EEC /* Sources */,
-				6829202621576A3200EC5EEC /* Frameworks */,
-				6829202721576A3200EC5EEC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6829202B21576A3200EC5EEC /* PBXTargetDependency */,
-			);
-			name = AutoReloadTests;
-			productName = AutoReloadTests;
-			productReference = 6829202921576A3200EC5EEC /* AutoReloadTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		6829203321576A3200EC5EEC /* AutoReloadUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6829204321576A3200EC5EEC /* Build configuration list for PBXNativeTarget "AutoReloadUITests" */;
-			buildPhases = (
-				6829203021576A3200EC5EEC /* Sources */,
-				6829203121576A3200EC5EEC /* Frameworks */,
-				6829203221576A3200EC5EEC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6829203621576A3200EC5EEC /* PBXTargetDependency */,
-			);
-			name = AutoReloadUITests;
-			productName = AutoReloadUITests;
-			productReference = 6829203421576A3200EC5EEC /* AutoReloadUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		6829204921576AB200EC5EEC /* SafariExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6829205F21576AB200EC5EEC /* Build configuration list for PBXNativeTarget "SafariExtension" */;
@@ -314,14 +220,6 @@
 							};
 						};
 					};
-					6829202821576A3200EC5EEC = {
-						CreatedOnToolsVersion = 10.0;
-						TestTargetID = 6829201621576A3000EC5EEC;
-					};
-					6829203321576A3200EC5EEC = {
-						CreatedOnToolsVersion = 10.0;
-						TestTargetID = 6829201621576A3000EC5EEC;
-					};
 					6829204921576AB200EC5EEC = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1130;
@@ -347,8 +245,6 @@
 			projectRoot = "";
 			targets = (
 				6829201621576A3000EC5EEC /* Auto Reload */,
-				6829202821576A3200EC5EEC /* AutoReloadTests */,
-				6829203321576A3200EC5EEC /* AutoReloadUITests */,
 				6829204921576AB200EC5EEC /* SafariExtension */,
 			);
 		};
@@ -362,20 +258,6 @@
 				6829201F21576A3100EC5EEC /* Assets.xcassets in Resources */,
 				681627132733EEDB00B75948 /* Credits.rtf in Resources */,
 				681347D42159732400B3EFAC /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6829202721576A3200EC5EEC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6829203221576A3200EC5EEC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,22 +286,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6829202521576A3200EC5EEC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6829202E21576A3200EC5EEC /* AutoReloadTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6829203021576A3200EC5EEC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6829203921576A3200EC5EEC /* AutoReloadUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6829204621576AB200EC5EEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,16 +300,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6829202B21576A3200EC5EEC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6829201621576A3000EC5EEC /* Auto Reload */;
-			targetProxy = 6829202A21576A3200EC5EEC /* PBXContainerItemProxy */;
-		};
-		6829203621576A3200EC5EEC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6829201621576A3000EC5EEC /* Auto Reload */;
-			targetProxy = 6829203521576A3200EC5EEC /* PBXContainerItemProxy */;
-		};
 		6829205D21576AB200EC5EEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6829204921576AB200EC5EEC /* SafariExtension */;
@@ -623,88 +479,6 @@
 			};
 			name = Release;
 		};
-		6829204121576A3200EC5EEC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N7TC759VWV;
-				INFOPLIST_FILE = AutoReloadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReloadTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoReload.app/Contents/MacOS/AutoReload";
-			};
-			name = Debug;
-		};
-		6829204221576A3200EC5EEC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N7TC759VWV;
-				INFOPLIST_FILE = AutoReloadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReloadTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoReload.app/Contents/MacOS/AutoReload";
-			};
-			name = Release;
-		};
-		6829204421576A3200EC5EEC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N7TC759VWV;
-				INFOPLIST_FILE = AutoReloadUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReloadUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = AutoReload;
-			};
-			name = Debug;
-		};
-		6829204521576A3200EC5EEC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = N7TC759VWV;
-				INFOPLIST_FILE = AutoReloadUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = DevSci.AutoReloadUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_TARGET_NAME = AutoReload;
-			};
-			name = Release;
-		};
 		6829206021576AB200EC5EEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -770,24 +544,6 @@
 			buildConfigurations = (
 				6829203E21576A3200EC5EEC /* Debug */,
 				6829203F21576A3200EC5EEC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6829204021576A3200EC5EEC /* Build configuration list for PBXNativeTarget "AutoReloadTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6829204121576A3200EC5EEC /* Debug */,
-				6829204221576A3200EC5EEC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6829204321576A3200EC5EEC /* Build configuration list for PBXNativeTarget "AutoReloadUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6829204421576A3200EC5EEC /* Debug */,
-				6829204521576A3200EC5EEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
