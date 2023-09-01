@@ -11,24 +11,33 @@
 import SafariServices
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
+    let viewController: SafariExtensionViewController
+    
+    override init() {
+        viewController = SafariExtensionViewController.shared
+        viewController.preferredContentSize = NSSize(width: 140, height: 164)
+        
+        super.init()
+    }
+    
     /// Called when Safari's state has changed in a way that requires the toolbar item to be revalidated.
     override func validateToolbarItem(
         in window: SFSafariWindow,
         validationHandler: @escaping ((Bool, String) -> Void)
     ) {
-        SafariExtensionViewController.shared.updateToolbarIcon(window: window)
+        viewController.updateToolbarIcon(window: window)
         validationHandler(true, "")
     }
 
     override func popoverWillShow(in window: SFSafariWindow) {
-        SafariExtensionViewController.shared.loadPopover(window: window)
+        self.viewController.loadPopover(window: window)
     }
 
     override func popoverDidClose(in window: SFSafariWindow) {
-        SafariExtensionViewController.shared.stopCountdownTimer()
+        viewController.stopCountdownTimer()
     }
 
     override func popoverViewController() -> SFSafariExtensionViewController {
-        return SafariExtensionViewController.shared
+        return viewController
     }
 }

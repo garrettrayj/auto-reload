@@ -70,6 +70,10 @@ class Reloader {
 
         return -1
     }
+    
+    deinit {
+        timer?.invalidate()
+    }
 }
 
 extension Reloader: Hashable {

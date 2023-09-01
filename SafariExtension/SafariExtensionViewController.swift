@@ -11,52 +11,50 @@
 import SafariServices
 
 class SafariExtensionViewController: SFSafariExtensionViewController {
-    static let shared: SafariExtensionViewController = {
-        let shared = SafariExtensionViewController()
-        shared.preferredContentSize = NSSize(width: 140, height: 164)
-        return shared
-    }()
-
-    @IBOutlet weak var intervalSlider: NSSlider!
-    @IBOutlet weak var stateLabel: NSTextField!
-    @IBOutlet weak var scopeSwitch: NSSegmentedControl!
-    @IBOutlet weak var timerLabel: NSTextField!
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
-    @IBOutlet weak var startStopButton: NSButton!
-    @IBOutlet weak var decreaseIntervalButton: NSButton!
-    @IBOutlet weak var increaseIntervalButton: NSButton!
+    static let shared: SafariExtensionViewController = SafariExtensionViewController()
+    
+    @IBOutlet weak var intervalSlider: NSSlider?
+    @IBOutlet weak var stateLabel: NSTextField?
+    @IBOutlet weak var scopeSwitch: NSSegmentedControl?
+    @IBOutlet weak var timerLabel: NSTextField?
+    @IBOutlet weak var progressIndicator: NSProgressIndicator?
+    @IBOutlet weak var startStopButton: NSButton?
+    @IBOutlet weak var decreaseIntervalButton: NSButton?
+    @IBOutlet weak var increaseIntervalButton: NSButton?
 
     @IBAction func adjustIntervalAction(_ sender: NSSlider) {
-        setInterval(interval: self.intervalSlider.doubleValue)
+        guard let sliderValue = self.intervalSlider?.doubleValue else { return }
+        
+        setInterval(interval: sliderValue)
         updatePopoverStatus()
     }
 
     @IBAction func decreaseInterval(_ sender: NSButton) {
-        let currentValue = self.intervalSlider.doubleValue
+        guard let sliderValue = self.intervalSlider?.doubleValue else { return }
 
-        if currentValue > 59 && currentValue - 60 > 59 {
-            setInterval(interval: currentValue - 60)
+        if sliderValue > 59 && sliderValue - 60 > 59 {
+            setInterval(interval: sliderValue - 60)
         } else {
-            setInterval(interval: currentValue - 1)
+            setInterval(interval: sliderValue - 1)
         }
 
         updatePopoverStatus()
     }
 
     @IBAction func increaseInterval(_ sender: NSButton) {
-        let currentValue = self.intervalSlider.doubleValue
+        guard let sliderValue = self.intervalSlider?.doubleValue else { return }
 
-        if currentValue > 59 {
-            setInterval(interval: currentValue + 60)
+        if sliderValue > 59 {
+            setInterval(interval: sliderValue + 60)
         } else {
-            setInterval(interval: currentValue + 1)
+            setInterval(interval: sliderValue + 1)
         }
 
         updatePopoverStatus()
     }
 
     @IBAction func changeScope(_ sender: NSSegmentedControl) {
-        UserDefaults.standard.set(scopeSwitch.integerValue, forKey: "scopeSwitchValue")
+        UserDefaults.standard.set(scopeSwitch?.integerValue, forKey: "scopeSwitchValue")
     }
 
     @IBAction func startStopAction(_ sender: NSButton) {
@@ -85,19 +83,19 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     func loadPopover(window: SFSafariWindow) {
         if let activeReloader = Reloaders.shared.forWindow(window: window) {
-            self.intervalSlider.doubleValue = activeReloader.interval
-            self.scopeSwitch.intValue = activeReloader.allTabs ? 1 : 0
+            self.intervalSlider?.doubleValue = activeReloader.interval
+            self.scopeSwitch?.intValue = activeReloader.allTabs ? 1 : 0
             self.setMode(mode: "running")
             self.updatePopoverStatus(reloader: activeReloader)
             self.startCountdownTimer(reloader: activeReloader)
         } else {
             let lastInterval = UserDefaults.standard.double(forKey: "intervalSliderValue")
             if lastInterval > 0 {
-                self.intervalSlider.doubleValue = lastInterval
+                self.intervalSlider?.doubleValue = lastInterval
             } else {
-                self.intervalSlider.doubleValue = 60
+                self.intervalSlider?.doubleValue = 60
             }
-            self.scopeSwitch.integerValue = UserDefaults.standard.integer(forKey: "scopeSwitchValue")
+            self.scopeSwitch?.integerValue = UserDefaults.standard.integer(forKey: "scopeSwitchValue")
             self.setMode(mode: "config")
             self.updatePopoverStatus()
         }
@@ -120,10 +118,11 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     private func addReloader(window: SFSafariWindow) {
+        guard let interval = self.intervalSlider?.doubleValue else { return }
         let reloader = Reloaders.shared.createReloader(
             window: window,
-            allTabs: scopeSwitch.intValue == 1,
-            interval: self.intervalSlider.doubleValue
+            allTabs: scopeSwitch?.intValue == 1,
+            interval: interval
         )
         setMode(mode: "running")
         updatePopoverStatus(reloader: reloader)
@@ -141,20 +140,20 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
 
     private func setMode(mode: String) {
         if mode == "running" {
-            intervalSlider.isHidden = true
-            increaseIntervalButton.isHidden = true
-            decreaseIntervalButton.isHidden = true
-            progressIndicator.isHidden = false
-            progressIndicator.startAnimation("animate")
-            scopeSwitch.isEnabled = false
-            startStopButton.state = .on
+            intervalSlider?.isHidden = true
+            increaseIntervalButton?.isHidden = true
+            decreaseIntervalButton?.isHidden = true
+            progressIndicator?.isHidden = false
+            progressIndicator?.startAnimation("animate")
+            scopeSwitch?.isEnabled = false
+            startStopButton?.state = .on
         } else {
-            intervalSlider.isHidden = false
-            decreaseIntervalButton.isHidden = false
-            increaseIntervalButton.isHidden = false
-            progressIndicator.isHidden = true
-            scopeSwitch.isEnabled = true
-            startStopButton.state = .off
+            intervalSlider?.isHidden = false
+            decreaseIntervalButton?.isHidden = false
+            increaseIntervalButton?.isHidden = false
+            progressIndicator?.isHidden = true
+            scopeSwitch?.isEnabled = true
+            startStopButton?.state = .off
         }
     }
 
@@ -162,16 +161,17 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         if let reloader = reloader {
             let secondsUntilReload = reloader.getSecondsUntilReload()
             let formattedInterval = self.formatCountdown(timeLeft: secondsUntilReload)
-            self.stateLabel.stringValue = "Reloading"
-            self.timerLabel.stringValue = "in \(formattedInterval)"
+            self.stateLabel?.stringValue = "Reloading"
+            self.timerLabel?.stringValue = "in \(formattedInterval)"
 
-            progressIndicator.minValue = 0
-            progressIndicator.maxValue = reloader.interval - 1
-            progressIndicator.doubleValue = reloader.interval - secondsUntilReload
+            progressIndicator?.minValue = 0
+            progressIndicator?.maxValue = reloader.interval - 1
+            progressIndicator?.doubleValue = reloader.interval - secondsUntilReload
         } else {
-            let formattedInterval = self.formatInterval(interval: self.intervalSlider.doubleValue)
-            stateLabel.stringValue = "Reload"
-            timerLabel.stringValue = "every \(formattedInterval)"
+            guard let interval = self.intervalSlider?.doubleValue else { return }
+            let formattedInterval = self.formatInterval(interval: interval)
+            stateLabel?.stringValue = "Reload"
+            timerLabel?.stringValue = "every \(formattedInterval)"
         }
     }
 
@@ -183,8 +183,8 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
 
     private func setInterval(interval: Double) {
-        intervalSlider.doubleValue = roundInterval(interval: interval)
-        UserDefaults.standard.set(intervalSlider.doubleValue, forKey: "intervalSliderValue")
+        intervalSlider?.doubleValue = roundInterval(interval: interval)
+        UserDefaults.standard.set(interval, forKey: "intervalSliderValue")
     }
 
     private func roundInterval(interval: Double) -> Double {
