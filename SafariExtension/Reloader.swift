@@ -5,6 +5,8 @@
 //  Created by Garrett Johnson on 9/23/18.
 //  Copyright © 2018 Garrett Johnson.
 //
+//  SPDX-License-Identifier: MIT
+//
 
 import Foundation
 import SafariServices
