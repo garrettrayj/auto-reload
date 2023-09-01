@@ -11,18 +11,18 @@ import SafariServices
 
 class Reloader {
     private var timer: Timer?
-    
+
     var window: SFSafariWindow
     var allTabs: Bool
     var interval: Double
-    
+
     init(window: SFSafariWindow, allTabs: Bool, interval: Double) {
         self.window = window
         self.allTabs = allTabs
         self.interval = interval
         self.startTimer()
     }
-    
+
     @objc func reload() {
         if allTabs {
             window.getAllTabs { tabs in
@@ -40,7 +40,7 @@ class Reloader {
             }
         }
     }
-    
+
     func startTimer() {
         NSLog("Adding a new timer with \(interval) second interval...")
         timer?.invalidate()
@@ -48,25 +48,25 @@ class Reloader {
             self.reload()
         }
     }
-    
+
     func stopTimer() {
         NSLog("Stopping timer...")
         timer?.invalidate()
     }
-    
+
     func getSecondsUntilReload() -> Double {
         if let timer = timer {
             let calendar = NSCalendar.current
             let components = calendar.dateComponents([.second], from: Date(), to: timer.fireDate)
-            
+
             if let seconds = components.second {
-                return Double(seconds) + 1.0;
+                return Double(seconds) + 1.0
             } else {
-                return 0;
+                return 0
             }
         }
-        
-        return -1;
+
+        return -1
     }
 }
 
@@ -74,7 +74,7 @@ extension Reloader: Hashable {
     static func == (lhs: Reloader, rhs: Reloader) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(window)
     }

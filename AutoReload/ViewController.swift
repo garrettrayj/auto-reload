@@ -9,7 +9,7 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    
+
     @IBOutlet weak var window: NSWindow!
 
     override func viewDidLoad() {

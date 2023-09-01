@@ -12,7 +12,7 @@ import Cocoa
 class Window: NSWindow {
     override public var isMovableByWindowBackground: Bool {
         get {
-            return true;
+            return true
         }
         set {
             super.isMovableByWindowBackground = newValue
