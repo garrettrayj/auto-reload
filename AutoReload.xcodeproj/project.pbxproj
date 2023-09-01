@@ -22,8 +22,6 @@
 		6829205E21576AB200EC5EEC /* SafariExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6829204A21576AB200EC5EEC /* SafariExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		683D584C23BA0361000E9573 /* Reloaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D584B23BA0361000E9573 /* Reloaders.swift */; };
 		6850394821838E9E00B0C959 /* Reloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6850394721838E9E00B0C959 /* Reloader.swift */; };
-		68B0FA8C215C677B00037CED /* TranslucentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B0FA8B215C677B00037CED /* TranslucentView.swift */; };
-		68B0FA8E215C693B00037CED /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B0FA8D215C693B00037CED /* Window.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +73,6 @@
 		68824D682733D84E00637214 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		68824D692733D84E00637214 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		68824D6A2733D84E00637214 /* TestPage.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TestPage.html; sourceTree = "<group>"; };
-		68B0FA8B215C677B00037CED /* TranslucentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslucentView.swift; sourceTree = "<group>"; };
-		68B0FA8D215C693B00037CED /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +97,12 @@
 		6829200E21576A3000EC5EEC = {
 			isa = PBXGroup;
 			children = (
+				6829201921576A3000EC5EEC /* AutoReload */,
+				6829204E21576AB200EC5EEC /* SafariExtension */,
 				68824D672733D84E00637214 /* AutoReloadDesign.sketch */,
 				68824D682733D84E00637214 /* LICENSE.txt */,
 				68824D692733D84E00637214 /* README.md */,
 				68824D6A2733D84E00637214 /* TestPage.html */,
-				6829201921576A3000EC5EEC /* AutoReload */,
-				6829204E21576AB200EC5EEC /* SafariExtension */,
 				6829204B21576AB200EC5EEC /* Frameworks */,
 				6829201821576A3000EC5EEC /* Products */,
 			);
@@ -130,8 +126,6 @@
 				6829201E21576A3100EC5EEC /* Assets.xcassets */,
 				6829202321576A3100EC5EEC /* Info.plist */,
 				6829202421576A3100EC5EEC /* AutoReload.entitlements */,
-				68B0FA8D215C693B00037CED /* Window.swift */,
-				68B0FA8B215C677B00037CED /* TranslucentView.swift */,
 				681627122733EEDB00B75948 /* Credits.rtf */,
 			);
 			path = AutoReload;
@@ -279,8 +273,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68B0FA8C215C677B00037CED /* TranslucentView.swift in Sources */,
-				68B0FA8E215C693B00037CED /* Window.swift in Sources */,
 				6829201D21576A3000EC5EEC /* ViewController.swift in Sources */,
 				6829201B21576A3000EC5EEC /* AppDelegate.swift in Sources */,
 			);

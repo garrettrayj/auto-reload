@@ -53,7 +53,6 @@
         reloadHistory.push(reloadDate)
         localStorage.setItem('history', JSON.stringify(reloadHistory));
         
-        
         reloadHistory.forEach((reloadDate, idx) => {
             var rowData = {'date': new Date(reloadDate), 'diff': 0}
             if (idx > 0) {

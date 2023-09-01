@@ -50,6 +50,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Garrett Johnson.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>Automatically reload tabs with configurable timers.</string>
+	<string>Refresh pages with repeating timers.</string>
 </dict>
 </plist>
