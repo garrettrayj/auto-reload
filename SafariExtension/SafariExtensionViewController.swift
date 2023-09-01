@@ -70,11 +70,12 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         }
     }
     
-    let intervalFormatter: DateComponentsFormatter = {
+    let timeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
         formatter.includesApproximationPhrase = false
         formatter.includesTimeRemainingPhrase = false
+        
         return formatter
     }()
     
@@ -94,9 +95,7 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
             } else {
                 self.intervalSlider.doubleValue = 60
             }
-            self.scopeSwitch.integerValue = UserDefaults.standard.integer(
-                forKey: "scopeSwitchValue"
-            )
+            self.scopeSwitch.integerValue = UserDefaults.standard.integer(forKey: "scopeSwitchValue")
             self.setMode(mode: "config")
             self.updatePopoverStatus()
         }
@@ -139,49 +138,44 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
     }
     
     private func setMode(mode: String) {
-        switch mode {
-        case "running":
+        if mode == "running" {
             intervalSlider.isHidden = true
             increaseIntervalButton.isHidden = true
             decreaseIntervalButton.isHidden = true
             progressIndicator.isHidden = false
             progressIndicator.startAnimation("animate")
+            scopeSwitch.isEnabled = false
             startStopButton.state = .on
-            break;
-        default:
-            // config mode
+        } else {
             intervalSlider.isHidden = false
             decreaseIntervalButton.isHidden = false
             increaseIntervalButton.isHidden = false
             progressIndicator.isHidden = true
+            scopeSwitch.isEnabled = true
             startStopButton.state = .off
         }
     }
     
     private func updatePopoverStatus(reloader: Reloader? = nil) {
         if let reloader = reloader {
-            // Window has an active timer. Use "running" status template
             let secondsUntilReload = reloader.getSecondsUntilReload()
-            let formattedInterval = self.formatIntervalForStatus(interval: secondsUntilReload)
+            let formattedInterval = self.formatCountdown(timeLeft: secondsUntilReload)
             self.stateLabel.stringValue = "Reloading"
             self.timerLabel.stringValue = "in \(formattedInterval)"
-            self.scopeSwitch.isEnabled = false
             
-            self.progressIndicator.minValue = 0;
-            self.progressIndicator.maxValue = reloader.interval - 1
-            self.progressIndicator.doubleValue = reloader.interval - secondsUntilReload
-            return
+            progressIndicator.minValue = 0;
+            progressIndicator.maxValue = reloader.interval - 1
+            progressIndicator.doubleValue = reloader.interval - secondsUntilReload
+        } else {
+            let formattedInterval = self.formatInterval(interval: self.intervalSlider.doubleValue)
+            stateLabel.stringValue = "Reload"
+            timerLabel.stringValue = "every \(formattedInterval)"
         }
-        
-        let formattedInterval = self.formatIntervalForConfig(interval: self.intervalSlider.doubleValue)
-        self.stateLabel.stringValue = "Reload"
-        self.timerLabel.stringValue = "every \(formattedInterval)"
-        self.scopeSwitch.isEnabled = true
     }
     
     private func startCountdownTimer(reloader: Reloader) {
         countdownTimer?.invalidate()
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {_ in
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             self.updatePopoverStatus(reloader: reloader)
         }
     }
@@ -201,24 +195,24 @@ class SafariExtensionViewController: SFSafariExtensionViewController {
         return roundedNum * 60
     }
     
-    private func formatIntervalForConfig(interval: Double) -> String {
+    private func formatInterval(interval: Double) -> String {
         if interval > 60 && interval < 3600 {
-            intervalFormatter.allowedUnits = [.minute]
+            timeFormatter.allowedUnits = [.minute]
         } else {
-            intervalFormatter.allowedUnits = [.hour, .minute, .second]
+            timeFormatter.allowedUnits = [.hour, .minute, .second]
         }
         
-        if let formattedInterval = intervalFormatter.string(from: interval) {
+        if let formattedInterval = timeFormatter.string(from: interval) {
             return formattedInterval
         } else {
             return "?"
         }
     }
     
-    private func formatIntervalForStatus(interval: Double) -> String {
-        intervalFormatter.allowedUnits = [.hour, .minute, .second]
+    private func formatCountdown(timeLeft: Double) -> String {
+        timeFormatter.allowedUnits = [.hour, .minute, .second]
         
-        if let formattedInterval = intervalFormatter.string(from: interval) {
+        if let formattedInterval = timeFormatter.string(from: timeLeft) {
             return formattedInterval
         } else {
             return "?"

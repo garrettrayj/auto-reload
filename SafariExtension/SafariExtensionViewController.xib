@@ -132,7 +132,7 @@
                         </stackView>
                         <button horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lqU-8f-J4P" userLabel="Start Stop Button">
                             <rect key="frame" x="17" y="-7" width="80" height="32"/>
-                            <buttonCell key="cell" type="push" title="Start" alternateTitle="Stop" bezelStyle="rounded" image="play" catalog="system" imagePosition="leading" alignment="center" alternateImage="stop" state="on" borderStyle="border" inset="2" id="dAd-i1-Hbh">
+                            <buttonCell key="cell" type="push" title="Start" alternateTitle="Stop" bezelStyle="rounded" image="play" catalog="system" imagePosition="leading" alignment="center" alternateImage="stop" borderStyle="border" inset="2" id="dAd-i1-Hbh">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
