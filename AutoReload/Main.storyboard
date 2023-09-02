@@ -273,8 +273,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppPanel1" width="300" height="300"/>
-        <image name="AppPanel2" width="300" height="300"/>
-        <image name="AppPanel3" width="300" height="300"/>
+        <image name="AppPanel1" width="900" height="900"/>
+        <image name="AppPanel2" width="900" height="900"/>
+        <image name="AppPanel3" width="900" height="900"/>
     </resources>
 </document>

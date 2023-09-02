@@ -5,10 +5,10 @@ Auto Reload
 
 <img src="https://github.com/garrettrayj/auto-reload/raw/master/AutoReload/Assets.xcassets/AppPanel3.imageset/get.started.3@3x.png" height="300" width="300" alt="Auto Reload Thumbnail" />
 
-Auto Reload is a Safari extension for automatically refreshing windows with recurring timers. 
-The primary focus is to provide said functionality with as few "add-on" side effects as possible. 
-There is no javascript, the interface is all native controls, and no additional permissions are required. 
-The extension ships in a basic Mac app with setup instructions. 
+Auto Reload is a Safari extension for automatically refreshing windows with recurring timers.
+The main focus is providing said functionality with as few "add-on" side effects as possible.
+There is no javascript, the interface is all native controls, and no additional permissions are required.
+The extension ships in a basic Mac app with setup instructions.
 The app is purely a wrapper and does not communicate with the extension.
 
 Installation
@@ -30,11 +30,11 @@ Support
 Build from Source
 -----------------
 
-Requires Xcode with command line tools. Prepare by uninstalling existing versions of Auto Reload.
+Requires Xcode. Prepare by uninstalling existing versions of Auto Reload.
 
 1. Clone the code
 2. Drag the project directory to Xcode
-4. Build and run the _application_ scheme then the _extension_ scheme to debug
+4. Build and run the _Auto Reload_ (application) scheme then the _Safari Extension_ scheme to debug
 
 ---------------------------
 &copy; 2021 Garrett Johnson
