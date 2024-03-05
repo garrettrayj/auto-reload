@@ -12,10 +12,12 @@ There is no javascript, the interface is all native controls, and no additional 
 The extension ships in a basic Mac app with setup instructions.
 The app is purely a wrapper and does not communicate with the extension.
 
+<a href="https://apps.apple.com/app/apple-store/id1437349439?pt=106763870&ct=GitHub&mt=8"><img src="http://localhost:63342/devsci.net/images/download-on-the-mac-app-store-black.svg" alt="Download on the Mac App Store" width="268" height="72" /></a>
+
 Installation
 ------------
 
-1. Download the [latest release](https://github.com/garrettrayj/auto-reload/releases/latest) from GitHub or purchase [Auto Reload on the Mac App Store](https://apps.apple.com/us/app/auto-reload/id1437349439) to support development and receive automatic updates
+1. Download the [latest release](https://github.com/garrettrayj/auto-reload/releases/latest) from GitHub or purchase [Auto Reload on the Mac App Store](https://apps.apple.com/app/apple-store/id1437349439?pt=106763870&ct=GitHub&mt=8) to support development and receive automatic updates
 2. Open the Auto Reload application
 3. Open Safari then go to `Settings` > `Extensions`
 4. Enable Auto Reload
@@ -27,15 +29,5 @@ Support
 
 [Send an email](mailto:garrett@devsci.net) or create a GitHub issue for help. Suggestions and feedback are always welcome, no matter whether it's a message, review, or issue here.
 
-
-Build from Source
------------------
-
-Requires Xcode. Prepare by uninstalling existing versions of Auto Reload.
-
-1. Clone the code
-2. Drag the project directory to Xcode
-4. Build and run the _Auto Reload_ (application) scheme then the _Safari Extension_ scheme to debug
-
----------------------------
-&copy; 2021 Garrett Johnson
+-------------------------------------
+Copyright &copy; 2024 Garrett Johnson
