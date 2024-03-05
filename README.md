@@ -3,9 +3,10 @@
 Auto Reload
 </h1>
 
-<img src="https://github.com/garrettrayj/auto-reload/raw/master/AutoReload/Assets.xcassets/AppPanel3.imageset/get.started.3@3x.png" height="300" width="300" alt="Auto Reload Thumbnail" />
-
 Auto Reload is a Safari extension for automatically refreshing windows with recurring timers.
+
+<img src="AutoReload/Assets.xcassets/AppPanel3.imageset/get.started.3@3x.png" height="300" width="300" alt="Auto Reload Thumbnail" />
+
 The main focus is providing said functionality with as few "add-on" side effects as possible.
 There is no javascript, the interface is all native controls, and no additional permissions are required.
 The extension ships in a basic Mac app with setup instructions.
