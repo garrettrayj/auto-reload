@@ -70,7 +70,7 @@
 		683D584B23BA0361000E9573 /* Reloaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reloaders.swift; sourceTree = "<group>"; };
 		6850394721838E9E00B0C959 /* Reloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reloader.swift; sourceTree = "<group>"; };
 		68824D672733D84E00637214 /* AutoReloadDesign.sketch */ = {isa = PBXFileReference; lastKnownFileType = file; path = AutoReloadDesign.sketch; sourceTree = "<group>"; };
-		68824D682733D84E00637214 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		68824D682733D84E00637214 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		68824D692733D84E00637214 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		68824D6A2733D84E00637214 /* TestPage.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = TestPage.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +100,7 @@
 				6829201921576A3000EC5EEC /* AutoReload */,
 				6829204E21576AB200EC5EEC /* SafariExtension */,
 				68824D672733D84E00637214 /* AutoReloadDesign.sketch */,
-				68824D682733D84E00637214 /* LICENSE.txt */,
+				68824D682733D84E00637214 /* LICENSE */,
 				68824D692733D84E00637214 /* README.md */,
 				68824D6A2733D84E00637214 /* TestPage.html */,
 				6829204B21576AB200EC5EEC /* Frameworks */,
