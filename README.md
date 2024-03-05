@@ -1,7 +1,7 @@
-<img src="https://github.com/garrettrayj/auto-reload/raw/master/AutoReload/Assets.xcassets/AppIcon.appiconset/icon_128x128@2x.png" height="128" width="128" alt="Auto Reload Icon" />
-
+<h1>
+<img src="AutoReload/Assets.xcassets/AppIcon.appiconset/icon_128x128@2x.png" height="128" width="128" alt="Auto Reload Icon" align="center" />
 Auto Reload
-===========
+</h1>
 
 <img src="https://github.com/garrettrayj/auto-reload/raw/master/AutoReload/Assets.xcassets/AppPanel3.imageset/get.started.3@3x.png" height="300" width="300" alt="Auto Reload Thumbnail" />
 
