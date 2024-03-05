@@ -12,7 +12,7 @@ There is no javascript, the interface is all native controls, and no additional 
 The extension ships in a basic Mac app with setup instructions.
 The app is purely a wrapper and does not communicate with the extension.
 
-<a href="https://apps.apple.com/app/apple-store/id1437349439?pt=106763870&ct=GitHub&mt=8"><img src="https://devsci.net/images/download-on-the-mac-app-store-black.svg" alt="Download on the Mac App Store" width="268" height="72" /></a>
+<a href="https://apps.apple.com/app/apple-store/id1437349439?pt=106763870&ct=GitHub&mt=8"><img src="https://devsci.net/images/download-on-the-mac-app-store-white.svg" alt="Download on the Mac App Store" width="156" height="40" /></a>
 
 Installation
 ------------
